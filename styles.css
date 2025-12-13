@@ -581,6 +581,10 @@ button {
 .modal-image-container {
     text-align: center;
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
 }
 
 .modal-image {
@@ -588,6 +592,7 @@ button {
     height: auto;
     border-radius: 0.5rem;
     box-shadow: var(--shadow-md);
+    display: block;
 }
 
 .modal-actions {

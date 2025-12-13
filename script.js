@@ -62,24 +62,47 @@ const problemsData = {
 // ============================================
 
 /**
- * Generate placeholder image URL based on problem ID
- * In production, replace with actual image URLs
+ * Get image URLs for a problem
+ * Returns an array of image URLs for the modal view
  */
-function getImageUrl(problemId, type = 'thumbnail') {
-    // Using placeholder service - replace with actual image paths
-    const seed = problemId.split('-').join('');
-    if (type === 'full') {
-        return `https://via.placeholder.com/800x1000/4299e1/ffffff?text=Problem+Solution+${problemId}`;
+function getImageUrls(problemId, category) {
+    // For integral-1 (first problem in Integrals section)
+    if (problemId === 'integral-1' && category === 'integrals') {
+        return [
+            'Math-Problems/Integrals/001/0001.jpg',
+            'Math-Problems/Integrals/001/0002.jpg'
+        ];
     }
+    
+    // For other problems, use placeholder (can be extended)
+    const seed = problemId.split('-').join('');
+    return [`https://via.placeholder.com/800x1000/4299e1/ffffff?text=Problem+Solution+${problemId}`];
+}
+
+/**
+ * Get thumbnail image URL
+ */
+function getThumbnailUrl(problemId, category) {
+    // For integral-1, use first image as thumbnail
+    if (problemId === 'integral-1' && category === 'integrals') {
+        return 'Math-Problems/Integrals/001/0001.jpg';
+    }
+    
+    // For other problems, use placeholder
     return `https://via.placeholder.com/300x300/4299e1/ffffff?text=${problemId}`;
 }
 
 /**
  * Get PDF download URL
- * In production, replace with actual PDF paths
  */
-function getPdfUrl(problemId) {
-    return `#pdf-${problemId}`; // Placeholder
+function getPdfUrl(problemId, category) {
+    // For integral-1
+    if (problemId === 'integral-1' && category === 'integrals') {
+        return 'Math-Problems/Integrals/001/01.pdf';
+    }
+    
+    // For other problems, placeholder
+    return `#pdf-${problemId}`;
 }
 
 /**
@@ -107,7 +130,7 @@ function createProblemCard(problem, category) {
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', `View solution for ${problem.title}`);
     
-    const thumbnailUrl = getImageUrl(problem.id, 'thumbnail');
+    const thumbnailUrl = getThumbnailUrl(problem.id, category);
     
     card.innerHTML = `
         <div class="problem-thumbnail-container">
@@ -177,20 +200,39 @@ function initDarkMode() {
 
 function openModal(problem, category) {
     const modal = document.getElementById('problemModal');
-    const modalImage = document.getElementById('modal-image');
+    const modalImageContainer = document.getElementById('modal-image-container');
     const modalTitle = document.getElementById('modal-title');
     const downloadBtn = document.getElementById('downloadPdf');
     
-    // Set modal content
+    // Set modal title
     modalTitle.textContent = problem.title;
-    modalImage.src = getImageUrl(problem.id, 'full');
-    modalImage.alt = `Complete solution for ${problem.title}`;
+    
+    // Clear previous images
+    modalImageContainer.innerHTML = '';
+    
+    // Get image URLs for this problem
+    const imageUrls = getImageUrls(problem.id, category);
+    
+    // Create and append image elements
+    imageUrls.forEach((imageUrl, index) => {
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = `Problem solution ${index + 1} for ${problem.title}`;
+        img.className = 'modal-image';
+        img.loading = 'eager';
+        modalImageContainer.appendChild(img);
+    });
     
     // Set download handler
     downloadBtn.onclick = () => {
-        const pdfUrl = getPdfUrl(problem.id);
-        // In production, this would trigger actual PDF download
-        window.open(pdfUrl, '_blank');
+        const pdfUrl = getPdfUrl(problem.id, category);
+        // Trigger PDF download
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = pdfUrl.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
     
     // Show modal
