@@ -7,54 +7,112 @@
 // Problem Data Structure
 // ============================================
 const problemsData = {
-    introductory: [
-        { id: 'intro-1', title: 'Basic Algebra: Linear Equations', difficulty: 'easy', keywords: ['algebra', 'linear', 'equations'] },
-        { id: 'intro-2', title: 'Quadratic Equations and Factoring', difficulty: 'easy', keywords: ['quadratic', 'factoring', 'polynomials'] },
-        { id: 'intro-3', title: 'Systems of Linear Equations', difficulty: 'medium', keywords: ['systems', 'linear', 'elimination'] },
-        { id: 'intro-4', title: 'Polynomial Operations', difficulty: 'medium', keywords: ['polynomials', 'operations', 'division'] },
-        { id: 'intro-5', title: 'Rational Expressions', difficulty: 'medium', keywords: ['rational', 'fractions', 'expressions'] },
-        { id: 'intro-6', title: 'Radical Expressions and Equations', difficulty: 'medium', keywords: ['radicals', 'square roots', 'simplification'] },
-        { id: 'intro-7', title: 'Exponential Functions', difficulty: 'medium', keywords: ['exponential', 'functions', 'growth'] },
-        { id: 'intro-8', title: 'Logarithmic Functions', difficulty: 'hard', keywords: ['logarithms', 'functions', 'properties'] },
-        { id: 'intro-9', title: 'Trigonometric Basics', difficulty: 'medium', keywords: ['trigonometry', 'angles', 'ratios'] },
-        { id: 'intro-10', title: 'Complex Numbers', difficulty: 'hard', keywords: ['complex', 'numbers', 'imaginary'] }
-    ],
-    limits: [
-        { id: 'limit-1', title: 'Basic Limit Evaluation', difficulty: 'easy', keywords: ['limits', 'evaluation', 'substitution'] },
-        { id: 'limit-2', title: 'Limit at Infinity', difficulty: 'medium', keywords: ['limits', 'infinity', 'asymptotes'] },
-        { id: 'limit-3', title: 'One-Sided Limits', difficulty: 'medium', keywords: ['limits', 'one-sided', 'continuity'] },
-        { id: 'limit-4', title: 'L\'Hôpital\'s Rule Application', difficulty: 'hard', keywords: ['lhopital', 'derivatives', 'indeterminate'] },
-        { id: 'limit-5', title: 'Trigonometric Limits', difficulty: 'medium', keywords: ['limits', 'trigonometry', 'special'] },
-        { id: 'limit-6', title: 'Limit with Rationalization', difficulty: 'medium', keywords: ['limits', 'rationalization', 'radicals'] },
-        { id: 'limit-7', title: 'Squeeze Theorem', difficulty: 'hard', keywords: ['limits', 'squeeze', 'theorem'] },
-        { id: 'limit-8', title: 'Limits of Piecewise Functions', difficulty: 'hard', keywords: ['limits', 'piecewise', 'functions'] },
-        { id: 'limit-9', title: 'Continuity Analysis', difficulty: 'medium', keywords: ['continuity', 'limits', 'discontinuity'] },
-        { id: 'limit-10', title: 'Advanced Limit Techniques', difficulty: 'hard', keywords: ['limits', 'advanced', 'techniques'] }
-    ],
-    integrals: [
-        { id: 'integral-1', title: 'Basic Indefinite Integrals', difficulty: 'easy', keywords: ['integrals', 'indefinite', 'antiderivatives'] },
-        { id: 'integral-2', title: 'U-Substitution Method', difficulty: 'medium', keywords: ['integrals', 'substitution', 'u-sub'] },
-        { id: 'integral-3', title: 'Integration by Parts', difficulty: 'medium', keywords: ['integrals', 'integration by parts', 'product'] },
-        { id: 'integral-4', title: 'Definite Integrals', difficulty: 'medium', keywords: ['integrals', 'definite', 'evaluation'] },
-        { id: 'integral-5', title: 'Trigonometric Integrals', difficulty: 'hard', keywords: ['integrals', 'trigonometry', 'identities'] },
-        { id: 'integral-6', title: 'Partial Fractions', difficulty: 'hard', keywords: ['integrals', 'partial fractions', 'rational'] },
-        { id: 'integral-7', title: 'Improper Integrals', difficulty: 'hard', keywords: ['integrals', 'improper', 'convergence'] },
-        { id: 'integral-8', title: 'Area Under Curves', difficulty: 'medium', keywords: ['integrals', 'area', 'applications'] },
-        { id: 'integral-9', title: 'Volume of Revolution', difficulty: 'hard', keywords: ['integrals', 'volume', 'revolution'] },
-        { id: 'integral-10', title: 'Arc Length and Surface Area', difficulty: 'hard', keywords: ['integrals', 'arc length', 'surface area'] }
-    ],
-    differentialEquations: [
-        { id: 'de-1', title: 'Separable Differential Equations', difficulty: 'medium', keywords: ['differential', 'separable', 'equations'] },
-        { id: 'de-2', title: 'First-Order Linear DE', difficulty: 'medium', keywords: ['differential', 'linear', 'first order'] },
-        { id: 'de-3', title: 'Homogeneous Equations', difficulty: 'hard', keywords: ['differential', 'homogeneous', 'substitution'] },
-        { id: 'de-4', title: 'Exact Differential Equations', difficulty: 'hard', keywords: ['differential', 'exact', 'integrating factor'] },
-        { id: 'de-5', title: 'Bernoulli Equations', difficulty: 'hard', keywords: ['differential', 'bernoulli', 'nonlinear'] },
-        { id: 'de-6', title: 'Second-Order Linear Homogeneous', difficulty: 'hard', keywords: ['differential', 'second order', 'homogeneous'] },
-        { id: 'de-7', title: 'Method of Undetermined Coefficients', difficulty: 'hard', keywords: ['differential', 'undetermined coefficients', 'particular'] },
-        { id: 'de-8', title: 'Variation of Parameters', difficulty: 'hard', keywords: ['differential', 'variation of parameters', 'particular'] },
-        { id: 'de-9', title: 'Applications: Population Growth', difficulty: 'medium', keywords: ['differential', 'applications', 'population'] },
-        { id: 'de-10', title: 'Applications: Mixing Problems', difficulty: 'medium', keywords: ['differential', 'applications', 'mixing'] }
-    ]
+    introductory: {
+        title: 'Introductory Problems in Mathematics',
+        description: 'Master the fundamentals with our collection of introductory mathematics problems. These foundational problems cover essential concepts and techniques that form the basis for advanced mathematical study.',
+        problems: [
+            { id: 'intro-1', title: 'Basic Algebra: Linear Equations', difficulty: 'easy', keywords: ['algebra', 'linear', 'equations'] },
+            { id: 'intro-2', title: 'Quadratic Equations and Factoring', difficulty: 'easy', keywords: ['quadratic', 'factoring', 'polynomials'] },
+            { id: 'intro-3', title: 'Systems of Linear Equations', difficulty: 'medium', keywords: ['systems', 'linear', 'elimination'] },
+            { id: 'intro-4', title: 'Polynomial Operations', difficulty: 'medium', keywords: ['polynomials', 'operations', 'division'] },
+            { id: 'intro-5', title: 'Rational Expressions', difficulty: 'medium', keywords: ['rational', 'fractions', 'expressions'] },
+            { id: 'intro-6', title: 'Radical Expressions and Equations', difficulty: 'medium', keywords: ['radicals', 'square roots', 'simplification'] },
+            { id: 'intro-7', title: 'Exponential Functions', difficulty: 'medium', keywords: ['exponential', 'functions', 'growth'] },
+            { id: 'intro-8', title: 'Logarithmic Functions', difficulty: 'hard', keywords: ['logarithms', 'functions', 'properties'] },
+            { id: 'intro-9', title: 'Trigonometric Basics', difficulty: 'medium', keywords: ['trigonometry', 'angles', 'ratios'] },
+            { id: 'intro-10', title: 'Complex Numbers', difficulty: 'hard', keywords: ['complex', 'numbers', 'imaginary'] }
+        ]
+    },
+    limits: {
+        title: 'Limits',
+        description: 'Understand limit concepts and techniques with detailed solutions. Explore problems involving one-sided limits, infinite limits, continuity, and L\'Hôpital\'s rule applications.',
+        problems: [
+            { id: 'limit-1', title: 'Basic Limit Evaluation', difficulty: 'easy', keywords: ['limits', 'evaluation', 'substitution'] },
+            { id: 'limit-2', title: 'Limit at Infinity', difficulty: 'medium', keywords: ['limits', 'infinity', 'asymptotes'] },
+            { id: 'limit-3', title: 'One-Sided Limits', difficulty: 'medium', keywords: ['limits', 'one-sided', 'continuity'] },
+            { id: 'limit-4', title: 'L\'Hôpital\'s Rule Application', difficulty: 'hard', keywords: ['lhopital', 'derivatives', 'indeterminate'] },
+            { id: 'limit-5', title: 'Trigonometric Limits', difficulty: 'medium', keywords: ['limits', 'trigonometry', 'special'] },
+            { id: 'limit-6', title: 'Limit with Rationalization', difficulty: 'medium', keywords: ['limits', 'rationalization', 'radicals'] },
+            { id: 'limit-7', title: 'Squeeze Theorem', difficulty: 'hard', keywords: ['limits', 'squeeze', 'theorem'] },
+            { id: 'limit-8', title: 'Limits of Piecewise Functions', difficulty: 'hard', keywords: ['limits', 'piecewise', 'functions'] },
+            { id: 'limit-9', title: 'Continuity Analysis', difficulty: 'medium', keywords: ['continuity', 'limits', 'discontinuity'] },
+            { id: 'limit-10', title: 'Advanced Limit Techniques', difficulty: 'hard', keywords: ['limits', 'advanced', 'techniques'] }
+        ]
+    },
+    integrals: {
+        title: 'Integrals',
+        description: 'Comprehensive solved integral problems covering definite and indefinite integrals, integration by parts, substitution methods, trigonometric integrals, and applications of integration.',
+        problems: [
+            { id: 'integral-1', title: 'Basic Indefinite Integrals', difficulty: 'easy', keywords: ['integrals', 'indefinite', 'antiderivatives'] },
+            { id: 'integral-2', title: 'U-Substitution Method', difficulty: 'medium', keywords: ['integrals', 'substitution', 'u-sub'] },
+            { id: 'integral-3', title: 'Integration by Parts', difficulty: 'medium', keywords: ['integrals', 'integration by parts', 'product'] },
+            { id: 'integral-4', title: 'Definite Integrals', difficulty: 'medium', keywords: ['integrals', 'definite', 'evaluation'] },
+            { id: 'integral-5', title: 'Trigonometric Integrals', difficulty: 'hard', keywords: ['integrals', 'trigonometry', 'identities'] },
+            { id: 'integral-6', title: 'Partial Fractions', difficulty: 'hard', keywords: ['integrals', 'partial fractions', 'rational'] },
+            { id: 'integral-7', title: 'Improper Integrals', difficulty: 'hard', keywords: ['integrals', 'improper', 'convergence'] },
+            { id: 'integral-8', title: 'Area Under Curves', difficulty: 'medium', keywords: ['integrals', 'area', 'applications'] },
+            { id: 'integral-9', title: 'Volume of Revolution', difficulty: 'hard', keywords: ['integrals', 'volume', 'revolution'] },
+            { id: 'integral-10', title: 'Arc Length and Surface Area', difficulty: 'hard', keywords: ['integrals', 'arc length', 'surface area'] }
+        ]
+    },
+    'differential-equations': {
+        title: 'Differential Equations',
+        description: 'Solve differential equations with confidence using our step-by-step solutions. Includes problems on separable equations, linear differential equations, homogeneous equations, and applications.',
+        problems: [
+            { id: 'de-1', title: 'Separable Differential Equations', difficulty: 'medium', keywords: ['differential', 'separable', 'equations'] },
+            { id: 'de-2', title: 'First-Order Linear DE', difficulty: 'medium', keywords: ['differential', 'linear', 'first order'] },
+            { id: 'de-3', title: 'Homogeneous Equations', difficulty: 'hard', keywords: ['differential', 'homogeneous', 'substitution'] },
+            { id: 'de-4', title: 'Exact Differential Equations', difficulty: 'hard', keywords: ['differential', 'exact', 'integrating factor'] },
+            { id: 'de-5', title: 'Bernoulli Equations', difficulty: 'hard', keywords: ['differential', 'bernoulli', 'nonlinear'] },
+            { id: 'de-6', title: 'Second-Order Linear Homogeneous', difficulty: 'hard', keywords: ['differential', 'second order', 'homogeneous'] },
+            { id: 'de-7', title: 'Method of Undetermined Coefficients', difficulty: 'hard', keywords: ['differential', 'undetermined coefficients', 'particular'] },
+            { id: 'de-8', title: 'Variation of Parameters', difficulty: 'hard', keywords: ['differential', 'variation of parameters', 'particular'] },
+            { id: 'de-9', title: 'Applications: Population Growth', difficulty: 'medium', keywords: ['differential', 'applications', 'population'] },
+            { id: 'de-10', title: 'Applications: Mixing Problems', difficulty: 'medium', keywords: ['differential', 'applications', 'mixing'] }
+        ]
+    },
+    series: {
+        title: 'Series',
+        description: 'Master infinite series and sequences with comprehensive solved problems. Explore convergence tests, power series, Taylor series, Fourier series, and applications of series in mathematical analysis.',
+        problems: [
+            { id: 'series-1', title: 'Arithmetic and Geometric Series', difficulty: 'easy', keywords: ['series', 'arithmetic', 'geometric', 'sum'] },
+            { id: 'series-2', title: 'Convergence Tests: Divergence Test', difficulty: 'medium', keywords: ['series', 'convergence', 'divergence', 'test'] },
+            { id: 'series-3', title: 'Integral Test for Convergence', difficulty: 'medium', keywords: ['series', 'integral test', 'convergence'] },
+            { id: 'series-4', title: 'Comparison Test and Limit Comparison', difficulty: 'medium', keywords: ['series', 'comparison test', 'limit comparison'] },
+            { id: 'series-5', title: 'Ratio Test and Root Test', difficulty: 'hard', keywords: ['series', 'ratio test', 'root test', 'convergence'] },
+            { id: 'series-6', title: 'Alternating Series Test', difficulty: 'medium', keywords: ['series', 'alternating', 'convergence', 'test'] },
+            { id: 'series-7', title: 'Power Series and Interval of Convergence', difficulty: 'hard', keywords: ['series', 'power series', 'convergence', 'interval'] },
+            { id: 'series-8', title: 'Taylor Series and Maclaurin Series', difficulty: 'hard', keywords: ['series', 'taylor', 'maclaurin', 'expansion'] },
+            { id: 'series-9', title: 'Fourier Series', difficulty: 'hard', keywords: ['series', 'fourier', 'trigonometric', 'periodic'] },
+            { id: 'series-10', title: 'Applications of Series', difficulty: 'hard', keywords: ['series', 'applications', 'approximation', 'analysis'] }
+        ]
+    },
+    'differential-calculus': {
+        title: 'Differential Calculus',
+        description: 'Explore the fundamentals of differential calculus with step-by-step solutions. Master derivatives, differentiation rules, chain rule, product rule, quotient rule, implicit differentiation, and applications including optimization and related rates.',
+        problems: [
+            { id: 'dc-1', title: 'Basic Derivatives: Power Rule', difficulty: 'easy', keywords: ['derivatives', 'power rule', 'differentiation'] },
+            { id: 'dc-2', title: 'Product Rule and Quotient Rule', difficulty: 'medium', keywords: ['derivatives', 'product rule', 'quotient rule'] },
+            { id: 'dc-3', title: 'Chain Rule for Composite Functions', difficulty: 'medium', keywords: ['derivatives', 'chain rule', 'composite functions'] },
+            { id: 'dc-4', title: 'Implicit Differentiation', difficulty: 'medium', keywords: ['derivatives', 'implicit', 'differentiation'] },
+            { id: 'dc-5', title: 'Higher Order Derivatives', difficulty: 'medium', keywords: ['derivatives', 'higher order', 'second derivative'] },
+            { id: 'dc-6', title: 'Derivatives of Trigonometric Functions', difficulty: 'medium', keywords: ['derivatives', 'trigonometric', 'sine', 'cosine'] },
+            { id: 'dc-7', title: 'Derivatives of Exponential and Logarithmic Functions', difficulty: 'medium', keywords: ['derivatives', 'exponential', 'logarithmic', 'e', 'ln'] },
+            { id: 'dc-8', title: 'Applications: Tangent Lines and Normal Lines', difficulty: 'medium', keywords: ['derivatives', 'applications', 'tangent', 'normal'] },
+            { id: 'dc-9', title: 'Optimization Problems', difficulty: 'hard', keywords: ['derivatives', 'optimization', 'maxima', 'minima'] },
+            { id: 'dc-10', title: 'Related Rates Problems', difficulty: 'hard', keywords: ['derivatives', 'related rates', 'applications', 'time'] }
+        ]
+    }
+};
+
+// Section name mapping for category keys
+const sectionCategoryMap = {
+    'introductory': 'introductory',
+    'limits': 'limits',
+    'integrals': 'integrals',
+    'differential-equations': 'differentialEquations',
+    'series': 'series',
+    'differential-calculus': 'differentialCalculus'
 };
 
 // ============================================
@@ -65,9 +123,9 @@ const problemsData = {
  * Get image URLs for a problem
  * Returns an array of image URLs for the modal view
  */
-function getImageUrls(problemId, category) {
+function getImageUrls(problemId, sectionKey) {
     // For integral-1 (first problem in Integrals section)
-    if (problemId === 'integral-1' && category === 'integrals') {
+    if (problemId === 'integral-1' && sectionKey === 'integrals') {
         return [
             'Math-Problems/Integrals/001/0001.jpg',
             'Math-Problems/Integrals/001/0002.jpg'
@@ -82,9 +140,9 @@ function getImageUrls(problemId, category) {
 /**
  * Get thumbnail image URL
  */
-function getThumbnailUrl(problemId, category) {
+function getThumbnailUrl(problemId, sectionKey) {
     // For integral-1, use first image as thumbnail
-    if (problemId === 'integral-1' && category === 'integrals') {
+    if (problemId === 'integral-1' && sectionKey === 'integrals') {
         return 'Math-Problems/Integrals/001/0001.jpg';
     }
     
@@ -95,9 +153,9 @@ function getThumbnailUrl(problemId, category) {
 /**
  * Get PDF download URL
  */
-function getPdfUrl(problemId, category) {
+function getPdfUrl(problemId, sectionKey) {
     // For integral-1
-    if (problemId === 'integral-1' && category === 'integrals') {
+    if (problemId === 'integral-1' && sectionKey === 'integrals') {
         return 'Math-Problems/Integrals/001/01.pdf';
     }
     
@@ -120,17 +178,17 @@ function getDifficultyLabel(difficulty) {
 /**
  * Generate problem card HTML
  */
-function createProblemCard(problem, category) {
+function createProblemCard(problem, sectionKey) {
     const card = document.createElement('article');
     card.className = 'problem-card';
     card.setAttribute('role', 'listitem');
-    card.setAttribute('data-category', category);
+    card.setAttribute('data-category', sectionKey);
     card.setAttribute('data-id', problem.id);
     card.setAttribute('data-keywords', problem.keywords.join(','));
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', `View solution for ${problem.title}`);
     
-    const thumbnailUrl = getThumbnailUrl(problem.id, category);
+    const thumbnailUrl = getThumbnailUrl(problem.id, sectionKey);
     
     card.innerHTML = `
         <div class="problem-thumbnail-container">
@@ -151,13 +209,13 @@ function createProblemCard(problem, category) {
     `;
     
     // Add click handler
-    card.addEventListener('click', () => openModal(problem, category));
+    card.addEventListener('click', () => openModal(problem, sectionKey));
     
     // Add keyboard handler
     card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            openModal(problem, category);
+            openModal(problem, sectionKey);
         }
     });
     
@@ -198,7 +256,7 @@ function initDarkMode() {
 // Modal Functionality
 // ============================================
 
-function openModal(problem, category) {
+function openModal(problem, sectionKey) {
     const modal = document.getElementById('problemModal');
     const modalImageContainer = document.getElementById('modal-image-container');
     const modalTitle = document.getElementById('modal-title');
@@ -211,7 +269,7 @@ function openModal(problem, category) {
     modalImageContainer.innerHTML = '';
     
     // Get image URLs for this problem
-    const imageUrls = getImageUrls(problem.id, category);
+    const imageUrls = getImageUrls(problem.id, sectionKey);
     
     // Create and append image elements
     imageUrls.forEach((imageUrl, index) => {
@@ -225,7 +283,7 @@ function openModal(problem, category) {
     
     // Set download handler
     downloadBtn.onclick = () => {
-        const pdfUrl = getPdfUrl(problem.id, category);
+        const pdfUrl = getPdfUrl(problem.id, sectionKey);
         // Trigger PDF download
         const link = document.createElement('a');
         link.href = pdfUrl;
@@ -299,9 +357,17 @@ function initSearch() {
     const clearSearchBtn = document.getElementById('clearSearch');
     const searchResults = document.getElementById('searchResults');
     
+    if (!searchInput || !clearSearchBtn || !searchResults) return;
+    
     let searchTimeout;
     
     searchInput.addEventListener('input', (e) => {
+        // Only search if we're on a section view
+        const sectionView = document.getElementById('section-view');
+        if (!sectionView || !sectionView.classList.contains('active')) {
+            return;
+        }
+        
         clearTimeout(searchTimeout);
         const query = e.target.value.trim().toLowerCase();
         
@@ -349,32 +415,122 @@ function initSearch() {
     function clearSearch() {
         const allCards = document.querySelectorAll('.problem-card');
         allCards.forEach(card => card.classList.remove('hidden'));
-        clearSearchBtn.style.display = 'none';
-        searchResults.textContent = '';
+        if (clearSearchBtn) {
+            clearSearchBtn.style.display = 'none';
+        }
+        if (searchResults) {
+            searchResults.textContent = '';
+        }
     }
+    
+    // Make clearSearch available globally for routing
+    window.clearSearch = clearSearch;
 }
 
 // ============================================
-// Initialize Problem Grids
+// Routing System
 // ============================================
 
-function initializeProblems() {
-    const gridMappings = {
-        'intro-grid': { data: problemsData.introductory, category: 'introductory' },
-        'limits-grid': { data: problemsData.limits, category: 'limits' },
-        'integrals-grid': { data: problemsData.integrals, category: 'integrals' },
-        'de-grid': { data: problemsData.differentialEquations, category: 'differentialEquations' }
-    };
+function navigateToSection(sectionKey) {
+    // Update URL hash
+    window.location.hash = sectionKey;
+    handleRoute();
+}
+
+function handleRoute() {
+    const hash = window.location.hash.slice(1) || 'home';
+    const homeView = document.getElementById('home-view');
+    const sectionView = document.getElementById('section-view');
+    const breadcrumbList = document.getElementById('breadcrumb-list');
     
-    Object.entries(gridMappings).forEach(([gridId, config]) => {
-        const grid = document.getElementById(gridId);
-        if (!grid) return;
+    if (hash === 'home' || hash === '') {
+        // Show home view
+        homeView.classList.add('active');
+        sectionView.classList.remove('active');
         
-        config.data.forEach(problem => {
-            const card = createProblemCard(problem, config.category);
-            grid.appendChild(card);
+        // Update breadcrumb
+        breadcrumbList.innerHTML = '<li><a href="#home" class="breadcrumb-link">Home</a></li>';
+    } else if (problemsData[hash]) {
+        // Show section view
+        homeView.classList.remove('active');
+        sectionView.classList.add('active');
+        
+        // Load section data
+        const sectionData = problemsData[hash];
+        const sectionHeading = document.getElementById('section-heading');
+        const sectionDescription = document.getElementById('section-description');
+        const problemsGrid = document.getElementById('problems-grid');
+        
+        // Update section info
+        sectionHeading.textContent = sectionData.title;
+        sectionDescription.textContent = sectionData.description;
+        
+        // Clear and populate problems grid
+        problemsGrid.innerHTML = '';
+        sectionData.problems.forEach(problem => {
+            const card = createProblemCard(problem, hash);
+            problemsGrid.appendChild(card);
+        });
+        
+        // Update breadcrumb
+        const sectionName = sectionData.title;
+        breadcrumbList.innerHTML = `
+            <li><a href="#home" class="breadcrumb-link">Home</a></li>
+            <li aria-current="page">${sectionName}</li>
+        `;
+        
+        // Clear search
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.value = '';
+            if (typeof window.clearSearch === 'function') {
+                window.clearSearch();
+            } else {
+                // Fallback: manually clear search results
+                const allCards = document.querySelectorAll('.problem-card');
+                allCards.forEach(card => card.classList.remove('hidden'));
+                const clearSearchBtn = document.getElementById('clearSearch');
+                if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+                const searchResults = document.getElementById('searchResults');
+                if (searchResults) searchResults.textContent = '';
+            }
+        }
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+}
+
+function initRouting() {
+    // Handle initial route
+    handleRoute();
+    
+    // Handle hash changes
+    window.addEventListener('hashchange', handleRoute);
+    
+    // Handle section card clicks
+    document.querySelectorAll('.section-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const sectionKey = card.getAttribute('data-section');
+            navigateToSection(sectionKey);
+        });
+        
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const sectionKey = card.getAttribute('data-section');
+                navigateToSection(sectionKey);
+            }
         });
     });
+    
+    // Handle back button
+    const backButton = document.getElementById('back-button');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            navigateToSection('home');
+        });
+    }
 }
 
 // ============================================
@@ -388,6 +544,16 @@ function initSmoothScroll() {
             if (href === '#' || href === '#download' || href === '#contact') {
                 e.preventDefault();
                 return;
+            }
+            
+            // Let routing handle hash navigation
+            if (href.startsWith('#') && href !== '#home') {
+                // Check if it's a section route
+                const sectionKey = href.slice(1);
+                if (problemsData[sectionKey] || sectionKey === 'home') {
+                    // Routing will handle it via hashchange
+                    return;
+                }
             }
             
             const target = document.querySelector(href);
@@ -436,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
     initModal();
     initSearch();
-    initializeProblems();
+    initRouting();
     initSmoothScroll();
     initLazyLoading();
     
@@ -448,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
     announcement.setAttribute('role', 'status');
     announcement.setAttribute('aria-live', 'polite');
     announcement.className = 'visually-hidden';
-    announcement.textContent = 'Mathematics problems page loaded. Use search to find specific problems.';
+    announcement.textContent = 'Mathematics problems page loaded. Select a section to view problems.';
     document.body.appendChild(announcement);
     setTimeout(() => document.body.removeChild(announcement), 3000);
     
@@ -462,8 +628,9 @@ if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         problemsData,
         createProblemCard,
-        getImageUrl,
+        getThumbnailUrl,
         getPdfUrl
     };
 }
+
 

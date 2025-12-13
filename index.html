@@ -37,132 +37,128 @@
     <!-- Breadcrumb Navigation -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
         <div class="container">
-            <ol class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li aria-current="page">Solved Mathematics Problems</li>
+            <ol class="breadcrumb-list" id="breadcrumb-list">
+                <li><a href="#home" class="breadcrumb-link">Home</a></li>
             </ol>
         </div>
     </nav>
 
     <!-- Main Content -->
     <main id="main-content" class="main" role="main">
-        <!-- Hero Section -->
-        <section class="hero" aria-labelledby="hero-heading">
-            <div class="container">
-                <h1 id="hero-heading" class="hero-heading">Solved Mathematics Problems with Step-by-Step Solutions</h1>
-                <p class="hero-description">
-                    Explore our comprehensive collection of solved mathematics problems featuring detailed step-by-step solutions. 
-                    Each problem includes clear explanations, downloadable PDFs, and structured learning resources covering 
-                    introductory mathematics, limits, integrals, and differential equations. Perfect for students, educators, 
-                    and anyone looking to master mathematical problem-solving techniques.
-                </p>
-                <div class="hero-features">
-                    <span class="feature-badge">📄 PDF Downloads</span>
-                    <span class="feature-badge">✅ Step-by-Step Solutions</span>
-                    <span class="feature-badge">📚 Categorized Content</span>
+        <!-- Home View -->
+        <div id="home-view" class="view active">
+            <!-- Hero Section -->
+            <section class="hero" aria-labelledby="hero-heading">
+                <div class="container">
+                    <h1 id="hero-heading" class="hero-heading">Solved Mathematics Problems with Step-by-Step Solutions</h1>
+                    <p class="hero-description">
+                        Explore our comprehensive collection of solved mathematics problems featuring detailed step-by-step solutions. 
+                        Each problem includes clear explanations, downloadable PDFs, and structured learning resources covering 
+                        introductory mathematics, limits, integrals, and differential equations. Perfect for students, educators, 
+                        and anyone looking to master mathematical problem-solving techniques.
+                    </p>
+                    <div class="hero-features">
+                        <span class="feature-badge">📄 PDF Downloads</span>
+                        <span class="feature-badge">✅ Step-by-Step Solutions</span>
+                        <span class="feature-badge">📚 Categorized Content</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Search Section -->
-        <section class="search-section" aria-labelledby="search-heading">
-            <div class="container">
-                <h2 id="search-heading" class="visually-hidden">Search Problems</h2>
-                <div class="search-container">
-                    <label for="searchInput" class="search-label">Search problems by keyword:</label>
-                    <input 
-                        type="search" 
-                        id="searchInput" 
-                        class="search-input" 
-                        placeholder="e.g., quadratic equation, derivative, integration..."
-                        aria-label="Search mathematics problems"
-                    >
-                    <button id="clearSearch" class="clear-search" aria-label="Clear search" style="display: none;">✕</button>
+            <!-- Sections Grid -->
+            <section class="sections-grid-section" aria-labelledby="sections-heading">
+                <div class="container">
+                    <h2 id="sections-heading" class="visually-hidden">Mathematics Problem Sections</h2>
+                    <div class="sections-grid">
+                        <article class="section-card" data-section="introductory" role="button" tabindex="0" aria-label="View Introductory Problems">
+                            <div class="section-card-icon">📚</div>
+                            <h3 class="section-card-title">Introductory Problems</h3>
+                            <p class="section-card-description">
+                                Master the fundamentals with foundational mathematics problems covering essential concepts and techniques.
+                            </p>
+                            <div class="section-card-count">10 Problems</div>
+                        </article>
+                        <article class="section-card" data-section="limits" role="button" tabindex="0" aria-label="View Limits Problems">
+                            <div class="section-card-icon">📊</div>
+                            <h3 class="section-card-title">Limits</h3>
+                            <p class="section-card-description">
+                                Understand limit concepts with detailed solutions including one-sided limits, continuity, and L'Hôpital's rule.
+                            </p>
+                            <div class="section-card-count">10 Problems</div>
+                        </article>
+                        <article class="section-card" data-section="integrals" role="button" tabindex="0" aria-label="View Integrals Problems">
+                            <div class="section-card-icon">∫</div>
+                            <h3 class="section-card-title">Integrals</h3>
+                            <p class="section-card-description">
+                                Comprehensive solved integral problems covering definite and indefinite integrals, integration by parts, and more.
+                            </p>
+                            <div class="section-card-count">10 Problems</div>
+                        </article>
+                        <article class="section-card" data-section="differential-equations" role="button" tabindex="0" aria-label="View Differential Equations Problems">
+                            <div class="section-card-icon">∂</div>
+                            <h3 class="section-card-title">Differential Equations</h3>
+                            <p class="section-card-description">
+                                Solve differential equations with step-by-step solutions including separable, linear, and homogeneous equations.
+                            </p>
+                            <div class="section-card-count">10 Problems</div>
+                        </article>
+                        <article class="section-card" data-section="series" role="button" tabindex="0" aria-label="View Series Problems">
+                            <div class="section-card-icon">∑</div>
+                            <h3 class="section-card-title">Series</h3>
+                            <p class="section-card-description">
+                                Master infinite series and sequences with comprehensive solved problems covering convergence tests, power series, and Taylor series.
+                            </p>
+                            <div class="section-card-count">10 Problems</div>
+                        </article>
+                        <article class="section-card" data-section="differential-calculus" role="button" tabindex="0" aria-label="View Differential Calculus Problems">
+                            <div class="section-card-icon">d/dx</div>
+                            <h3 class="section-card-title">Differential Calculus</h3>
+                            <p class="section-card-description">
+                                Master derivatives and differentiation with step-by-step solutions covering rules, chain rule, implicit differentiation, and optimization problems.
+                            </p>
+                            <div class="section-card-count">10 Problems</div>
+                        </article>
+                    </div>
                 </div>
-                <div id="searchResults" class="search-results" role="status" aria-live="polite"></div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Introductory Problems Section -->
-        <section class="problems-section" id="introductory" aria-labelledby="intro-heading">
-            <div class="container">
-                <h2 id="intro-heading" class="section-heading">Introductory Problems in Mathematics</h2>
-                <p class="section-description">
-                    Master the fundamentals with our collection of introductory mathematics problems. These foundational 
-                    problems cover essential concepts and techniques that form the basis for advanced mathematical study.
-                </p>
-                <div class="problems-grid" id="intro-grid" role="list" aria-label="Introductory mathematics problems">
-                    <!-- Problems will be dynamically inserted here -->
+        <!-- Section Views -->
+        <div id="section-view" class="view">
+            <button id="back-button" class="back-button" aria-label="Go back to home">
+                ← Back to Home
+            </button>
+            
+            <!-- Search Section -->
+            <section class="search-section" aria-labelledby="search-heading">
+                <div class="container">
+                    <h2 id="search-heading" class="visually-hidden">Search Problems</h2>
+                    <div class="search-container">
+                        <label for="searchInput" class="search-label">Search problems by keyword:</label>
+                        <input 
+                            type="search" 
+                            id="searchInput" 
+                            class="search-input" 
+                            placeholder="e.g., quadratic equation, derivative, integration..."
+                            aria-label="Search mathematics problems"
+                        >
+                        <button id="clearSearch" class="clear-search" aria-label="Clear search" style="display: none;">✕</button>
+                    </div>
+                    <div id="searchResults" class="search-results" role="status" aria-live="polite"></div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Limits Section -->
-        <section class="problems-section" id="limits" aria-labelledby="limits-heading">
-            <div class="container">
-                <h2 id="limits-heading" class="section-heading">Limits</h2>
-                <p class="section-description">
-                    Understand limit concepts and techniques with detailed solutions. Explore problems involving 
-                    one-sided limits, infinite limits, continuity, and L'Hôpital's rule applications.
-                </p>
-                <div class="problems-grid" id="limits-grid" role="list" aria-label="Limits problems">
-                    <!-- Problems will be dynamically inserted here -->
+            <!-- Problems Section (dynamically populated) -->
+            <section class="problems-section" id="problems-section" aria-labelledby="section-heading">
+                <div class="container">
+                    <h2 id="section-heading" class="section-heading"></h2>
+                    <p id="section-description" class="section-description"></p>
+                    <div class="problems-grid" id="problems-grid" role="list" aria-label="Mathematics problems">
+                        <!-- Problems will be dynamically inserted here -->
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Integrals Section -->
-        <section class="problems-section" id="integrals" aria-labelledby="integrals-heading">
-            <div class="container">
-                <h2 id="integrals-heading" class="section-heading">Integrals</h2>
-                <p class="section-description">
-                    Comprehensive solved integral problems covering definite and indefinite integrals, integration by parts, 
-                    substitution methods, trigonometric integrals, and applications of integration.
-                </p>
-                <div class="problems-grid" id="integrals-grid" role="list" aria-label="Integrals problems">
-                    <!-- Problems will be dynamically inserted here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Differential Equations Section -->
-        <section class="problems-section" id="differential-equations" aria-labelledby="de-heading">
-            <div class="container">
-                <h2 id="de-heading" class="section-heading">Differential Equations</h2>
-                <p class="section-description">
-                    Solve differential equations with confidence using our step-by-step solutions. Includes problems 
-                    on separable equations, linear differential equations, homogeneous equations, and applications.
-                </p>
-                <div class="problems-grid" id="de-grid" role="list" aria-label="Differential equations problems">
-                    <!-- Problems will be dynamically inserted here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Call-to-Action Section -->
-        <section class="cta-section" aria-labelledby="cta-heading">
-            <div class="container">
-                <h2 id="cta-heading" class="cta-heading">Download Full Problem Sets</h2>
-                <p class="cta-description">
-                    Get access to complete problem sets with comprehensive solutions. Perfect for practice, 
-                    exam preparation, and systematic learning.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#download" class="cta-button primary" aria-label="Download introductory Problem Set (PDF)">
-                        Download introductory Problem Set (PDF)
-                    </a>
-                    <a href="#download" class="cta-button primary" aria-label="Download Limits Problem Set (PDF)">
-                        Download Limits Problem Set (PDF)
-                    </a>
-                    <a href="#download" class="cta-button primary" aria-label="Download Integrals Problem Set (PDF)">
-                        Download Integrals Problem Set (PDF)
-                    </a>
-                    <a href="#download" class="cta-button primary" aria-label="Download differential equations Problem Set (PDF)">
-                        Download differential equations Problem Set (PDF)
-                    </a>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -172,10 +168,13 @@
                 &copy; 2024 MathLopedia. All rights reserved. Educational resources for mathematical learning.
             </p>
             <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#home">Home</a>
                 <a href="#introductory">Introductory Problems</a>
                 <a href="#limits">Limits</a>
                 <a href="#integrals">Integrals</a>
                 <a href="#differential-equations">Differential Equations</a>
+                <a href="#series">Series</a>
+                <a href="#differential-calculus">Differential Calculus</a>
             </nav>
         </div>
     </footer>
