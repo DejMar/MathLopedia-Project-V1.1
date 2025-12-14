@@ -22,7 +22,10 @@
         <div class="container">
             <nav class="nav" role="navigation" aria-label="Main navigation">
                 <div class="nav-brand" style="display: flex; align-items: center; gap: 1.5rem;">
-                    <h1 class="site-title" style="margin-right: 1.5rem;">MathLopedia</h1>
+                    <!-- Make MathLopedia clickable to go to home -->
+                    <a href="#home" aria-label="Go to MathLopedia Home" style="text-decoration: none;">
+                        <h1 class="site-title" style="margin-right: 1.5rem;">MathLopedia</h1>
+                    </a>
                     <div class="header-download-buttons" id="header-download-buttons">
                         <a 
                             data-section="introductory" 
@@ -299,4 +302,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

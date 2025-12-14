@@ -8,15 +8,15 @@ const integralsData = {
     description: 'Comprehensive solved integral problems covering definite and indefinite integrals, integration by parts, substitution methods, trigonometric integrals, and applications of integration.',
     problems: [
         { id: 'integral-1', title: 'Basic Indefinite Integrals', difficulty: 'easy', keywords: ['integrals', 'indefinite', 'antiderivatives'] },
-        { id: 'integral-2', title: 'U-Substitution Method', difficulty: 'medium', keywords: ['integrals', 'substitution', 'u-sub'] },
-        { id: 'integral-3', title: 'Integration by Parts', difficulty: 'medium', keywords: ['integrals', 'integration by parts', 'product'] },
-        { id: 'integral-4', title: 'Definite Integrals', difficulty: 'medium', keywords: ['integrals', 'definite', 'evaluation'] },
-        { id: 'integral-5', title: 'Trigonometric Integrals', difficulty: 'hard', keywords: ['integrals', 'trigonometry', 'identities'] },
-        { id: 'integral-6', title: 'Partial Fractions', difficulty: 'hard', keywords: ['integrals', 'partial fractions', 'rational'] },
-        { id: 'integral-7', title: 'Improper Integrals', difficulty: 'hard', keywords: ['integrals', 'improper', 'convergence'] },
-        { id: 'integral-8', title: 'Area Under Curves', difficulty: 'medium', keywords: ['integrals', 'area', 'applications'] },
-        { id: 'integral-9', title: 'Volume of Revolution', difficulty: 'hard', keywords: ['integrals', 'volume', 'revolution'] },
-        { id: 'integral-10', title: 'Arc Length and Surface Area', difficulty: 'hard', keywords: ['integrals', 'arc length', 'surface area'] }
+        { id: 'integral-2', title: 'Basic Indefinite Integrals', difficulty: 'medium', keywords: ['integrals', 'substitution', 'u-sub'] },
+        { id: 'integral-3', title: 'Basic Indefinite Integrals', difficulty: 'medium', keywords: ['integrals', 'integration by parts', 'product'] },
+        { id: 'integral-4', title: 'Basic Indefinite Integrals', difficulty: 'medium', keywords: ['integrals', 'definite', 'evaluation'] },
+        { id: 'integral-5', title: 'Basic Indefinite Integrals', difficulty: 'hard', keywords: ['integrals', 'trigonometry', 'identities'] },
+        { id: 'integral-6', title: 'Basic Indefinite Integrals', difficulty: 'hard', keywords: ['integrals', 'partial fractions', 'rational'] },
+        { id: 'integral-7', title: 'Basic Indefinite Integrals', difficulty: 'hard', keywords: ['integrals', 'improper', 'convergence'] },
+        { id: 'integral-8', title: 'Basic Indefinite Integrals', difficulty: 'medium', keywords: ['integrals', 'area', 'applications'] },
+        { id: 'integral-9', title: 'Basic Indefinite Integrals', difficulty: 'hard', keywords: ['integrals', 'volume', 'revolution'] },
+        { id: 'integral-10', title: 'Basic Indefinite Integrals', difficulty: 'hard', keywords: ['integrals', 'arc length', 'surface area'] }
     ]
 };
 
