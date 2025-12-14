@@ -21,8 +21,70 @@
     <header class="header" role="banner">
         <div class="container">
             <nav class="nav" role="navigation" aria-label="Main navigation">
-                <div class="nav-brand">
-                    <h1 class="site-title">MathLopedia</h1>
+                <div class="nav-brand" style="display: flex; align-items: center; gap: 1.5rem;">
+                    <h1 class="site-title" style="margin-right: 1.5rem;">MathLopedia</h1>
+                    <div class="header-download-buttons" id="header-download-buttons">
+                        <a 
+                            data-section="introductory" 
+                            aria-label="Go to Introductory Problems"
+                            href="#introductory"
+                            class="header-download-btn header-download-btn-introductory"
+                        >
+                            <span class="download-btn-content">
+                                <span class="download-btn-title">Introductory</span>
+                            </span>
+                        </a>
+                        <a 
+                            data-section="limits" 
+                            aria-label="Go to Limits Problems"
+                            href="#limits"
+                            class="header-download-btn header-download-btn-limits"
+                        >
+                            <span class="download-btn-content">
+                                <span class="download-btn-title">Limits</span>
+                            </span>
+                        </a>
+                        <a 
+                            data-section="integrals" 
+                            aria-label="Go to Integrals Problems"
+                            href="#integrals"
+                            class="header-download-btn header-download-btn-integrals"
+                        >
+                            <span class="download-btn-content">
+                                <span class="download-btn-title">Integrals</span>
+                            </span>
+                        </a>
+                        <a 
+                            data-section="differential-equations" 
+                            aria-label="Go to Differential Equations Problems"
+                            href="#differential-equations"
+                            class="header-download-btn header-download-btn-differential-equations"
+                        >
+                            <span class="download-btn-content">
+                                <span class="download-btn-title">Differential Equations</span>
+                            </span>
+                        </a>
+                        <a 
+                            data-section="series" 
+                            aria-label="Go to Series Problems"
+                            href="#series"
+                            class="header-download-btn header-download-btn-series"
+                        >
+                            <span class="download-btn-content">
+                                <span class="download-btn-title">Series</span>
+                            </span>
+                        </a>
+                        <a 
+                            data-section="differential-calculus" 
+                            aria-label="Go to Differential Calculus Problems"
+                            href="#differential-calculus"
+                            class="header-download-btn header-download-btn-differential-calculus"
+                        >
+                            <span class="download-btn-content">
+                                <span class="download-btn-title">Differential Calculus</span>
+                            </span>
+                        </a>
+                    </div>
                 </div>
                 <div class="nav-controls">
                     <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">

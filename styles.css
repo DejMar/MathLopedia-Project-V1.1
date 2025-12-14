@@ -180,6 +180,103 @@ button {
 }
 
 /* ============================================
+   Header Download Buttons
+   ============================================ */
+.header-download-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header-download-btn {
+    --outline-btn-radius: 1.8em;
+    --outline-btn-padding-y: 0.4em;
+    --outline-btn-padding-x: 1em;
+    --outline-btn-font-size: 0.97rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--outline-btn-border, var(--text-primary));
+    background: transparent;
+    color: var(--outline-btn-color, var(--text-primary));
+    border-radius: var(--outline-btn-radius);
+    padding: var(--outline-btn-padding-y) var(--outline-btn-padding-x);
+    font-weight: 500;
+    font-size: var(--outline-btn-font-size);
+    transition: 
+        background 0.17s cubic-bezier(.4,0,.2,1),
+        border-color 0.17s cubic-bezier(.4,0,.2,1),
+        color 0.17s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.16s cubic-bezier(.4,0,.2,1);
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    text-decoration: none;
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    user-select: none;
+}
+
+.header-download-btn .download-btn-title {
+    position: relative;
+    z-index: 2;
+}
+
+.header-download-btn:focus-visible {
+    outline: 2.5px solid var(--accent-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px var(--outlineFocus-glow, rgba(80,160,222,0.14));
+    border-color: var(--accent-color);
+    background: var(--btn-focus-bg, var(--accent-focus-bg, rgba(80,160,222,0.07)));
+}
+
+.header-download-btn:hover,
+.header-download-btn:active {
+    background: var(--outline-btn-hover-bg, var(--accent-bg-hover, rgba(80,160,222,0.10)));
+    border-color: var(--accent-color, #2684ff);
+    color: var(--accent-color, #2684ff);
+    text-decoration: none;
+}
+
+.header-download-btn[aria-current="page"],
+.header-download-btn.active {
+    background: var(--outline-btn-active-bg, var(--accent-bg-active, rgba(80,160,222,0.15)));
+    border-color: var(--accent-color, #2684ff);
+    color: var(--accent-color, #2684ff);
+}
+
+/* Light mode */
+:root {
+    --outline-btn-border: var(--text-primary, #222);
+    --outline-btn-color: var(--text-primary, #23272E);
+    --outline-btn-hover-bg: rgba(38, 132, 255, 0.08);
+    --outline-btn-active-bg: rgba(38, 132, 255, 0.16);
+    --outlineFocus-glow: rgba(38,132,255,0.16);
+    --btn-focus-bg: rgba(38,132,255,0.11);
+}
+
+/* Dark mode overrides (using class 'dark' on html or body, adapt if needed) */
+html.dark .header-download-btn,
+body.dark .header-download-btn {
+    --outline-btn-border: var(--text-primary, #EEE);
+    --outline-btn-color: var(--text-primary, #F0F3F8);
+    --outline-btn-hover-bg: rgba(38,132,255,0.16);
+    --outline-btn-active-bg: rgba(38,132,255,0.22);
+    --outlineFocus-glow: rgba(38,132,255,0.25);
+    --btn-focus-bg: rgba(38,132,255,0.12);
+}
+
+@media (max-width: 600px) {
+    .header-download-btn {
+        font-size: 0.93rem;
+        padding: 0.4em 0.85em;
+    }
+    .header-download-buttons {
+        gap: 0.30rem;
+    }
+}
+
+/* ============================================
    Breadcrumb
    ============================================ */
 .breadcrumb {
