@@ -206,29 +206,6 @@
 
         <!-- Section Views -->
         <div id="section-view" class="view">
-            <button id="back-button" class="back-button" aria-label="Go back to home">
-                ← Back to Home
-            </button>
-            
-            <!-- Search Section -->
-            <section class="search-section" aria-labelledby="search-heading">
-                <div class="container">
-                    <h2 id="search-heading" class="visually-hidden">Search Problems</h2>
-                    <div class="search-container">
-                        <label for="searchInput" class="search-label">Search problems by keyword:</label>
-                        <input 
-                            type="search" 
-                            id="searchInput" 
-                            class="search-input" 
-                            placeholder="e.g., quadratic equation, derivative, integration..."
-                            aria-label="Search mathematics problems"
-                        >
-                        <button id="clearSearch" class="clear-search" aria-label="Clear search" style="display: none;">✕</button>
-                    </div>
-                    <div id="searchResults" class="search-results" role="status" aria-live="polite"></div>
-                </div>
-            </section>
-
             <!-- Problems Section (dynamically populated) -->
             <section class="problems-section" id="problems-section" aria-labelledby="section-heading">
                 <div class="container">
@@ -239,6 +216,10 @@
                     </div>
                 </div>
             </section>
+            
+            <button id="back-button" class="back-button" aria-label="Go back to home">
+                ← Back to Home
+            </button>
         </div>
     </main>
 

@@ -227,84 +227,6 @@ function initModal() {
 }
 
 // ============================================
-// Search Functionality
-// ============================================
-
-function initSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const clearSearchBtn = document.getElementById('clearSearch');
-    const searchResults = document.getElementById('searchResults');
-    
-    if (!searchInput || !clearSearchBtn || !searchResults) return;
-    
-    let searchTimeout;
-    
-    searchInput.addEventListener('input', (e) => {
-        // Only search if we're on a section view
-        const sectionView = document.getElementById('section-view');
-        if (!sectionView || !sectionView.classList.contains('active')) {
-            return;
-        }
-        
-        clearTimeout(searchTimeout);
-        const query = e.target.value.trim().toLowerCase();
-        
-        searchTimeout = setTimeout(() => {
-            if (query.length === 0) {
-                clearSearch();
-                return;
-            }
-            
-            performSearch(query);
-            clearSearchBtn.style.display = 'block';
-        }, 300);
-    });
-    
-    clearSearchBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        clearSearch();
-    });
-    
-    function performSearch(query) {
-        const allCards = document.querySelectorAll('.problem-card');
-        let visibleCount = 0;
-        
-        allCards.forEach(card => {
-            const title = card.querySelector('.problem-title').textContent.toLowerCase();
-            const keywords = card.getAttribute('data-keywords').toLowerCase();
-            const category = card.getAttribute('data-category');
-            
-            if (title.includes(query) || keywords.includes(query) || category.includes(query)) {
-                card.classList.remove('hidden');
-                visibleCount++;
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-        
-        // Update search results announcement
-        searchResults.textContent = visibleCount > 0 
-            ? `Found ${visibleCount} problem${visibleCount !== 1 ? 's' : ''} matching "${query}"`
-            : `No problems found matching "${query}"`;
-        
-        searchResults.setAttribute('aria-live', 'polite');
-    }
-    
-    function clearSearch() {
-        const allCards = document.querySelectorAll('.problem-card');
-        allCards.forEach(card => card.classList.remove('hidden'));
-        if (clearSearchBtn) {
-            clearSearchBtn.style.display = 'none';
-        }
-        if (searchResults) {
-            searchResults.textContent = '';
-        }
-    }
-    
-    // Make clearSearch available globally for routing
-    window.clearSearch = clearSearch;
-}
-
 // ============================================
 // Routing System
 // ============================================
@@ -356,23 +278,6 @@ function handleRoute() {
             <li><a href="#home" class="breadcrumb-link">Home</a></li>
             <li aria-current="page">${sectionName}</li>
         `;
-        
-        // Clear search
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.value = '';
-            if (typeof window.clearSearch === 'function') {
-                window.clearSearch();
-            } else {
-                // Fallback: manually clear search results
-                const allCards = document.querySelectorAll('.problem-card');
-                allCards.forEach(card => card.classList.remove('hidden'));
-                const clearSearchBtn = document.getElementById('clearSearch');
-                if (clearSearchBtn) clearSearchBtn.style.display = 'none';
-                const searchResults = document.getElementById('searchResults');
-                if (searchResults) searchResults.textContent = '';
-            }
-        }
         
         // Scroll to top
         window.scrollTo(0, 0);
@@ -539,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all features
     initDarkMode();
     initModal();
-    initSearch();
     initRouting();
     initSmoothScroll();
     initLazyLoading();

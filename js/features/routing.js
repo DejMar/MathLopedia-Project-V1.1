@@ -6,7 +6,6 @@
 import { problemsData } from '../data/problemsData.js';
 import { createProblemCard } from '../utils/helpers.js';
 import { openModal } from './modal.js';
-import { getClearSearchFunction } from './search.js';
 
 export function navigateToSection(sectionKey) {
     // Update URL hash without causing page reload
@@ -63,24 +62,6 @@ function handleRoute(sectionKey = null) {
             <li><a href="#home" class="breadcrumb-link">Home</a></li>
             <li aria-current="page">${sectionName}</li>
         `;
-        
-        // Clear search
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.value = '';
-            const clearSearch = getClearSearchFunction();
-            if (clearSearch) {
-                clearSearch();
-            } else {
-                // Fallback: manually clear search results
-                const allCards = document.querySelectorAll('.problem-card');
-                allCards.forEach(card => card.classList.remove('hidden'));
-                const clearSearchBtn = document.getElementById('clearSearch');
-                if (clearSearchBtn) clearSearchBtn.style.display = 'none';
-                const searchResults = document.getElementById('searchResults');
-                if (searchResults) searchResults.textContent = '';
-            }
-        }
         
         // Scroll to top
         window.scrollTo(0, 0);
