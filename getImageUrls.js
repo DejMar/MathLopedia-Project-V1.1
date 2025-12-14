@@ -58,52 +58,66 @@ function getImageUrls(problemId, sectionKey) {
     }
     if (problemId === 'de-1' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/001/01_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/001/01_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/001/01_page-0002.jpg'
         ];
     }
     if (problemId === 'de-2' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/002/02_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/002/02_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/002/02_page-0002.jpg'
         ];
     }
     if (problemId === 'de-3' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/003/03_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/003/03_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/003/03_page-0002.jpg'
         ];
     }
     if (problemId === 'de-4' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/004/04_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/004/04_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/004/04_page-0002.jpg',
+            'Math-Problems/DifferentialEquations/004/04_page-0003.jpg'
         ];
     }
     if (problemId === 'de-5' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/005/05_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/005/05_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/005/05_page-0002.jpg'
         ];
     }
     if (problemId === 'de-6' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/006/06_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/006/06_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/006/06_page-0002.jpg',
+            'Math-Problems/DifferentialEquations/006/06_page-0003.jpg'
         ];
     }
     if (problemId === 'de-7' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/007/07_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/007/07_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/007/07_page-0002.jpg',
+            'Math-Problems/DifferentialEquations/007/07_page-0003.jpg',
+            'Math-Problems/DifferentialEquations/007/07_page-0004.jpg'
         ];
     }
     if (problemId === 'de-8' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/008/08_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/008/08_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/008/08_page-0002.jpg'
         ];
     }
     if (problemId === 'de-9' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/009/09_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/009/09_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/009/09_page-0002.jpg'
         ];
     }
     if (problemId === 'de-10' && sectionKey === 'differential-equations') {
         return [
-            'Math-Problems/DifferentialEquations/010/10_page-0001.jpg'
+            'Math-Problems/DifferentialEquations/010/10_page-0001.jpg',
+            'Math-Problems/DifferentialEquations/010/10_page-0002.jpg'
         ];
     }
     if (problemId === 'limit-1' && sectionKey === 'limits') {
@@ -218,22 +232,26 @@ function getImageUrls(problemId, sectionKey) {
     }
     if (problemId === 'dc-1' && sectionKey === 'differential-calculus') {
         return [
-            'Math-Problems/DifferentialCalculus/001/01_page-0001.jpg'
+            'Math-Problems/DifferentialCalculus/001/01_page-0001.jpg',
+            'Math-Problems/DifferentialCalculus/001/01_page-0002.jpg'
         ];
     }
     if (problemId === 'dc-2' && sectionKey === 'differential-calculus') {
         return [        
-            'Math-Problems/DifferentialCalculus/002/02_page-0001.jpg'
+            'Math-Problems/DifferentialCalculus/002/02_page-0001.jpg',
+            'Math-Problems/DifferentialCalculus/002/02_page-0002.jpg'
         ];
     }
     if (problemId === 'dc-3' && sectionKey === 'differential-calculus') {
         return [
-            'Math-Problems/DifferentialCalculus/003/03_page-0001.jpg'
+            'Math-Problems/DifferentialCalculus/003/03_page-0001.jpg',
+            'Math-Problems/DifferentialCalculus/003/03_page-0002.jpg'
         ];
     }
     if (problemId === 'dc-4' && sectionKey === 'differential-calculus') {
         return [
-            'Math-Problems/DifferentialCalculus/004/04_page-0001.jpg'
+            'Math-Problems/DifferentialCalculus/004/04_page-0001.jpg',
+            'Math-Problems/DifferentialCalculus/004/04_page-0002.jpg'
         ];
     }
     if (problemId === 'dc-5' && sectionKey === 'differential-calculus') {
