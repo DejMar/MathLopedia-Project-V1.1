@@ -178,8 +178,7 @@ function getImageUrls(problemId, sectionKey) {
     }
     if (problemId === 'series-2' && sectionKey === 'series') {
         return [
-            'Math-Problems/Series/002/02_page-0001.jpg',
-            'Math-Problems/Series/002/02_page-0002.jpg'
+            'Math-Problems/Series/002/02_page-0001.jpg'
         ];
     }
     if (problemId === 'series-3' && sectionKey === 'series') {
