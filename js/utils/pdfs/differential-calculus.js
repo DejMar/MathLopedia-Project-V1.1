@@ -1,16 +1,18 @@
 /**
- * PDF URLs for Differential Calculus section
+ * Dynamically retrieves PDF URLs for Differential Calculus section.
+ * Assumes folders are structured as Math-Problems/DifferentialCalculus/XXX/XX.pdf
+ * where XXX is zero-padded problem number (001, 002, ...) and XX is the file prefix.
  */
-const differentialCalculusPdfs = {
-    'dc-1': 'Math-Problems/DifferentialCalculus/001/01.pdf',
-    'dc-2': 'Math-Problems/DifferentialCalculus/002/02.pdf',
-    'dc-3': 'Math-Problems/DifferentialCalculus/003/03.pdf',
-    'dc-4': 'Math-Problems/DifferentialCalculus/004/04.pdf',
-    'dc-5': 'Math-Problems/DifferentialCalculus/005/05.pdf',
-    'dc-6': 'Math-Problems/DifferentialCalculus/006/06.pdf',
-    'dc-7': 'Math-Problems/DifferentialCalculus/007/07.pdf',
-    'dc-8': 'Math-Problems/DifferentialCalculus/008/08.pdf',
-    'dc-9': 'Math-Problems/DifferentialCalculus/009/09.pdf',
-    'dc-10': 'Math-Problems/DifferentialCalculus/010/10.pdf',
-};
 
+function getDifferentialCalculusPdfs(count = 10) {
+    const pdfs = {};
+    for (let i = 1; i <= count; i++) {
+        const folderNum = String(i).padStart(3, '0');
+        const fileNum = String(i).padStart(2, '0');
+        pdfs[`dc-${i}`] = `Math-Problems/DifferentialCalculus/${folderNum}/${fileNum}.pdf`;
+    }
+    return pdfs;
+}
+
+// Usage example:
+const differentialCalculusPdfs = getDifferentialCalculusPdfs();

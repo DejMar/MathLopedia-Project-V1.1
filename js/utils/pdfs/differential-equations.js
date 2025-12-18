@@ -1,16 +1,18 @@
 /**
- * PDF URLs for Differential Equations section
+ * Dynamically retrieves PDF URLs for Differential Equations section.
+ * Assumes folders are structured as Math-Problems/DifferentialEquations/XXX/XX.pdf
+ * where XXX is zero-padded problem number (001, 002, ...) and XX is the file prefix.
  */
-const differentialEquationsPdfs = {
-    'de-1': 'Math-Problems/DifferentialEquations/001/01.pdf',
-    'de-2': 'Math-Problems/DifferentialEquations/002/02.pdf',
-    'de-3': 'Math-Problems/DifferentialEquations/003/03.pdf',
-    'de-4': 'Math-Problems/DifferentialEquations/004/04.pdf',
-    'de-5': 'Math-Problems/DifferentialEquations/005/05.pdf',
-    'de-6': 'Math-Problems/DifferentialEquations/006/06.pdf',
-    'de-7': 'Math-Problems/DifferentialEquations/007/07.pdf',
-    'de-8': 'Math-Problems/DifferentialEquations/008/08.pdf',
-    'de-9': 'Math-Problems/DifferentialEquations/009/09.pdf',
-    'de-10': 'Math-Problems/DifferentialEquations/010/10.pdf',
-};
 
+function getDifferentialEquationsPdfs(count = 10) {
+    const pdfs = {};
+    for (let i = 1; i <= count; i++) {
+        const folderNum = String(i).padStart(3, '0');
+        const fileNum = String(i).padStart(2, '0');
+        pdfs[`de-${i}`] = `Math-Problems/DifferentialEquations/${folderNum}/${fileNum}.pdf`;
+    }
+    return pdfs;
+}
+
+// Usage example:
+const differentialEquationsPdfs = getDifferentialEquationsPdfs();

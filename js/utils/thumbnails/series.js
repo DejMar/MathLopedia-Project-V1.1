@@ -1,16 +1,14 @@
 /**
- * Thumbnail URLs for Series section
+ * Thumbnail URLs for Series section (dynamically generated)
  */
-const seriesThumbnails = {
-    'series-1': 'Math-Problems/Series/001/01_page-0001.jpg',
-    'series-2': 'Math-Problems/Series/002/02_page-0001.jpg',
-    'series-3': 'Math-Problems/Series/003/03_page-0001.jpg',
-    'series-4': 'Math-Problems/Series/004/04_page-0001.jpg',
-    'series-5': 'Math-Problems/Series/005/05_page-0001.jpg',
-    'series-6': 'Math-Problems/Series/006/06_page-0001.jpg',
-    'series-7': 'Math-Problems/Series/007/07_page-0001.jpg',
-    'series-8': 'Math-Problems/Series/008/08_page-0001.jpg',
-    'series-9': 'Math-Problems/Series/009/09_page-0001.jpg',
-    'series-10': 'Math-Problems/Series/010/10_page-0001.jpg',
-};
+function getSeriesThumbnails(count) {
+    const thumbnails = {};
+    for (let i = 1; i <= count; i++) {
+        const folderNum = String(i).padStart(3, '0');
+        const fileNum = String(i).padStart(2, '0');
+        thumbnails[`series-${i}`] = `Math-Problems/Series/${folderNum}/${fileNum}_page-0001.jpg`;
+    }
+    return thumbnails;
+}
 
+const seriesThumbnails = getSeriesThumbnails(10);

@@ -1,16 +1,18 @@
 /**
- * PDF URLs for Introductory section
+ * Dynamically retrieves PDF URLs for Introductory section.
+ * Assumes folders are structured as Math-Problems/Introduction/XXX/XX.pdf
+ * where XXX is zero-padded problem number (001, 002, ...) and XX is the file prefix.
  */
-const introductoryPdfs = {
-    'intro-1': 'Math-Problems/Introduction/001/01.pdf',
-    'intro-2': 'Math-Problems/Introduction/002/02.pdf',
-    'intro-3': 'Math-Problems/Introduction/003/03.pdf',
-    'intro-4': 'Math-Problems/Introduction/004/04.pdf',
-    'intro-5': 'Math-Problems/Introduction/005/05.pdf',
-    'intro-6': 'Math-Problems/Introduction/006/06.pdf',
-    'intro-7': 'Math-Problems/Introduction/007/07.pdf',
-    'intro-8': 'Math-Problems/Introduction/008/08.pdf',
-    'intro-9': 'Math-Problems/Introduction/009/09.pdf',
-    'intro-10': 'Math-Problems/Introduction/010/10.pdf',
-};
 
+function getIntroductoryPdfs(count = 10) {
+    const pdfs = {};
+    for (let i = 1; i <= count; i++) {
+        const folderNum = String(i).padStart(3, '0');
+        const fileNum = String(i).padStart(2, '0');
+        pdfs[`intro-${i}`] = `Math-Problems/Introduction/${folderNum}/${fileNum}.pdf`;
+    }
+    return pdfs;
+}
+
+// Usage example:
+const introductoryPdfs = getIntroductoryPdfs();

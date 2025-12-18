@@ -1,16 +1,14 @@
 /**
- * Thumbnail URLs for Introductory section
+ * Thumbnail URLs for Introductory section (dynamically generated)
  */
-const introductoryThumbnails = {
-    'intro-1': 'Math-Problems/Introduction/001/01_page-0001.jpg',
-    'intro-2': 'Math-Problems/Introduction/002/02_page-0001.jpg',
-    'intro-3': 'Math-Problems/Introduction/003/03_page-0001.jpg',
-    'intro-4': 'Math-Problems/Introduction/004/04_page-0001.jpg',
-    'intro-5': 'Math-Problems/Introduction/005/05_page-0001.jpg',
-    'intro-6': 'Math-Problems/Introduction/006/06_page-0001.jpg',
-    'intro-7': 'Math-Problems/Introduction/007/07_page-0001.jpg',
-    'intro-8': 'Math-Problems/Introduction/008/08_page-0001.jpg',
-    'intro-9': 'Math-Problems/Introduction/009/09_page-0001.jpg',
-    'intro-10': 'Math-Problems/Introduction/010/10_page-0001.jpg',
-};
+function getIntroductoryThumbnails(count = 20) {
+    const thumbnails = {};
+    for (let i = 1; i <= count; i++) {
+        const folderNum = String(i).padStart(3, '0');
+        const fileNum = String(i).padStart(2, '0');
+        thumbnails[`intro-${i}`] = `Math-Problems/Introduction/${folderNum}/${fileNum}_page-0001.jpg`;
+    }
+    return thumbnails;
+}
 
+const introductoryThumbnails = getIntroductoryThumbnails();

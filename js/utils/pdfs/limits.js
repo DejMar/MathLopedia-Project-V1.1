@@ -1,16 +1,18 @@
 /**
- * PDF URLs for Limits section
+ * Dynamically retrieves PDF URLs for Limits section.
+ * Assumes folders are structured as Math-Problems/Limits/XXX/XX.pdf
+ * where XXX is zero-padded problem number (001, 002, ...) and XX is the file prefix.
  */
-const limitsPdfs = {
-    'limit-1': 'Math-Problems/Limits/001/01.pdf',
-    'limit-2': 'Math-Problems/Limits/002/02.pdf',
-    'limit-3': 'Math-Problems/Limits/003/03.pdf',
-    'limit-4': 'Math-Problems/Limits/004/04.pdf',
-    'limit-5': 'Math-Problems/Limits/005/05.pdf',
-    'limit-6': 'Math-Problems/Limits/006/06.pdf',
-    'limit-7': 'Math-Problems/Limits/007/07.pdf',
-    'limit-8': 'Math-Problems/Limits/008/08.pdf',
-    'limit-9': 'Math-Problems/Limits/009/09.pdf',
-    'limit-10': 'Math-Problems/Limits/010/10.pdf',
-};
 
+function getLimitsPdfs(count = 10) {
+    const pdfs = {};
+    for (let i = 1; i <= count; i++) {
+        const folderNum = String(i).padStart(3, '0');
+        const fileNum = String(i).padStart(2, '0');
+        pdfs[`limit-${i}`] = `Math-Problems/Limits/${folderNum}/${fileNum}.pdf`;
+    }
+    return pdfs;
+}
+
+// Usage example:
+const limitsPdfs = getLimitsPdfs();
