@@ -227,6 +227,11 @@ function initModal() {
 }
 
 // ============================================
+// Pagination State
+// ============================================
+const PROBLEMS_PER_PAGE = 10;
+const paginationState = {};
+
 // ============================================
 // Routing System
 // ============================================
@@ -235,6 +240,71 @@ function navigateToSection(sectionKey) {
     // Update URL hash
     window.location.hash = sectionKey;
     handleRoute();
+}
+
+function renderPagination(sectionKey, totalProblems) {
+    const totalPages = Math.ceil(totalProblems / PROBLEMS_PER_PAGE);
+    if (totalPages <= 1) return '';
+    
+    const currentPage = paginationState[sectionKey] || 1;
+    
+    let paginationHTML = '<div class="pagination" role="navigation" aria-label="Pagination">';
+    
+    // Previous button
+    paginationHTML += `<button class="pagination-btn pagination-prev" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}" aria-label="Previous page">← Prev</button>`;
+    
+    // Page numbers
+    paginationHTML += '<div class="pagination-pages">';
+    for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `<button class="pagination-btn pagination-page ${i === currentPage ? 'active' : ''}" data-page="${i}" aria-label="Page ${i}" ${i === currentPage ? 'aria-current="page"' : ''}>${i}</button>`;
+    }
+    paginationHTML += '</div>';
+    
+    // Next button
+    paginationHTML += `<button class="pagination-btn pagination-next" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}" aria-label="Next page">Next →</button>`;
+    
+    paginationHTML += '</div>';
+    return paginationHTML;
+}
+
+function initPaginationListeners(sectionKey) {
+    const paginationContainer = document.querySelector('.pagination');
+    if (!paginationContainer) return;
+    
+    paginationContainer.querySelectorAll('.pagination-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const page = parseInt(e.target.dataset.page);
+            if (page && !e.target.disabled) {
+                paginationState[sectionKey] = page;
+                renderSectionProblems(sectionKey);
+                window.scrollTo({ top: document.getElementById('problems-grid').offsetTop - 100, behavior: 'smooth' });
+            }
+        });
+    });
+}
+
+function renderSectionProblems(sectionKey) {
+    const sectionData = problemsData[sectionKey];
+    const problemsGrid = document.getElementById('problems-grid');
+    const paginationWrapper = document.getElementById('pagination-wrapper');
+    
+    const currentPage = paginationState[sectionKey] || 1;
+    const startIndex = (currentPage - 1) * PROBLEMS_PER_PAGE;
+    const endIndex = startIndex + PROBLEMS_PER_PAGE;
+    const problemsToShow = sectionData.problems.slice(startIndex, endIndex);
+    
+    // Clear and populate problems grid
+    problemsGrid.innerHTML = '';
+    problemsToShow.forEach(problem => {
+        const card = createProblemCard(problem, sectionKey);
+        problemsGrid.appendChild(card);
+    });
+    
+    // Render pagination if needed
+    if (paginationWrapper) {
+        paginationWrapper.innerHTML = renderPagination(sectionKey, sectionData.problems.length);
+        initPaginationListeners(sectionKey);
+    }
 }
 
 function handleRoute() {
@@ -259,18 +329,18 @@ function handleRoute() {
         const sectionData = problemsData[hash];
         const sectionHeading = document.getElementById('section-heading');
         const sectionDescription = document.getElementById('section-description');
-        const problemsGrid = document.getElementById('problems-grid');
         
         // Update section info
         sectionHeading.textContent = sectionData.title;
         sectionDescription.textContent = sectionData.description;
         
-        // Clear and populate problems grid
-        problemsGrid.innerHTML = '';
-        sectionData.problems.forEach(problem => {
-            const card = createProblemCard(problem, hash);
-            problemsGrid.appendChild(card);
-        });
+        // Initialize pagination state if not set
+        if (!paginationState[hash]) {
+            paginationState[hash] = 1;
+        }
+        
+        // Render problems with pagination
+        renderSectionProblems(hash);
         
         // Update breadcrumb
         const sectionName = sectionData.title;

@@ -34,6 +34,36 @@ function getThumbnailUrl(problemId, sectionKey) {
     if (problemId === 'integral-10' && sectionKey === 'integrals') {
         return 'Math-Problems/Integrals/010/10_page-0001.jpg';
     }       
+    if (problemId === 'integral-11' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/011/11_page-0001.jpg';
+    }
+    if (problemId === 'integral-12' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/012/12_page-0001.jpg';
+    }
+    if (problemId === 'integral-13' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/013/13_page-0001.jpg';
+    }
+    if (problemId === 'integral-14' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/014/14_page-0001.jpg';
+    }
+    if (problemId === 'integral-15' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/015/15_page-0001.jpg';
+    }
+    if (problemId === 'integral-16' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/016/16_page-0001.jpg';
+    }
+    if (problemId === 'integral-17' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/017/17_page-0001.jpg';
+    }
+    if (problemId === 'integral-18' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/018/18_page-0001.jpg';
+    }
+    if (problemId === 'integral-19' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/019/19_page-0001.jpg';
+    }
+    if (problemId === 'integral-20' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/020/20_page-0001.jpg';
+    }
     if (problemId === 'de-1' && sectionKey === 'differential-equations') {
         return 'Math-Problems/DifferentialEquations/001/01_page-0001.jpg';
     }

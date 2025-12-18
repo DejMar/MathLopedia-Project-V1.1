@@ -34,6 +34,36 @@ function getPdfUrl(problemId, sectionKey) {
     if (problemId === 'integral-10' && sectionKey === 'integrals') {
         return 'Math-Problems/Integrals/010/10.pdf';
     }
+    if (problemId === 'integral-11' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/011/11.pdf';
+    }
+    if (problemId === 'integral-12' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/012/12.pdf';
+    }
+    if (problemId === 'integral-13' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/013/13.pdf';
+    }
+    if (problemId === 'integral-14' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/014/14.pdf';
+    }
+    if (problemId === 'integral-15' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/015/15.pdf';
+    }
+    if (problemId === 'integral-16' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/016/16.pdf';
+    }
+    if (problemId === 'integral-17' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/017/17.pdf';
+    }
+    if (problemId === 'integral-18' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/018/18.pdf';
+    }
+    if (problemId === 'integral-19' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/019/19.pdf';
+    }
+    if (problemId === 'integral-20' && sectionKey === 'integrals') {
+        return 'Math-Problems/Integrals/020/20.pdf';
+    }
     if (problemId === 'de-1' && sectionKey === 'differential-equations') {   
         return 'Math-Problems/DifferentialEquations/001/01.pdf';
     }
