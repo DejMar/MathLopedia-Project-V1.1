@@ -4,7 +4,7 @@
  * where XXX is zero-padded problem number (001, 002, ...) and XX is the file prefix.
  */
 
-function getIntroductoryPdfs(count = 10) {
+function getIntroductoryPdfs(count = 30) {
     const pdfs = {};
     for (let i = 1; i <= count; i++) {
         const folderNum = String(i).padStart(3, '0');

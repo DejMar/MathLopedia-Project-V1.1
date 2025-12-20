@@ -2,6 +2,7 @@
  * Image URLs for Differential Equations section
  */
 const differentialEquationsImages = {
+    //#region Problem 1-10
     'de-1': [
         'Math-Problems/DifferentialEquations/001/01_page-0001.jpg',
         'Math-Problems/DifferentialEquations/001/01_page-0002.jpg'
@@ -46,5 +47,6 @@ const differentialEquationsImages = {
         'Math-Problems/DifferentialEquations/010/10_page-0001.jpg',
         'Math-Problems/DifferentialEquations/010/10_page-0002.jpg'
     ]
+    //#endregion Problem 1-10
 };
 

@@ -1,7 +1,7 @@
 /**
  * Thumbnail URLs for Introductory section (dynamically generated)
  */
-function getIntroductoryThumbnails(count = 20) {
+function getIntroductoryThumbnails(count = 30) {
     const thumbnails = {};
     for (let i = 1; i <= count; i++) {
         const folderNum = String(i).padStart(3, '0');

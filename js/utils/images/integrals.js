@@ -2,6 +2,7 @@
  * Image URLs for Integrals section
  */
 const integralImages = {
+    //#region Problem 1-20
     'integral-1': ['Math-Problems/Integrals/001/Merged_image.jpg'],
     'integral-2': ['Math-Problems/Integrals/002/02_page-0001.jpg'],
     'integral-3': 
@@ -26,5 +27,6 @@ const integralImages = {
     'integral-18': ['Math-Problems/Integrals/018/18_page-0001.jpg'],
     'integral-19': ['Math-Problems/Integrals/019/19_page-0001.jpg'],
     'integral-20': ['Math-Problems/Integrals/020/20_page-0001.jpg']
+    //#endregion Problem 1-20
 };
 

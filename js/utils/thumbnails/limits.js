@@ -1,7 +1,7 @@
 /**
  * Thumbnail URLs for Limits section (dynamically generated)
  */
-function getLimitsThumbnails(count = 10) {
+function getLimitsThumbnails(count = 100) {
     const thumbnails = {};
     for (let i = 1; i <= count; i++) {
         const folderNum = String(i).padStart(3, '0');
