@@ -48,7 +48,162 @@ export function getPdfUrl(problemId, sectionKey) {
 }
 
 /**
- * Get collection PDF URL for a section
+ * Cache for links data
+ */
+let linksCache = null;
+let linksLoadPromise = null;
+
+/**
+ * Load links from links.json file
+ * @returns {Promise<Object>} Object mapping section keys to URLs
+ */
+export async function loadLinks() {
+    if (linksCache) {
+        return linksCache;
+    }
+    
+    // If already loading, return the existing promise
+    if (linksLoadPromise) {
+        return linksLoadPromise;
+    }
+    
+    // Start loading
+    linksLoadPromise = (async () => {
+        try {
+            // Try different possible paths
+            const paths = [
+                'ProblemsData/links.json',
+                './ProblemsData/links.json',
+                '/ProblemsData/links.json'
+            ];
+            
+            let response = null;
+            let lastError = null;
+            
+            for (const path of paths) {
+                try {
+                    response = await fetch(path);
+                    if (response.ok) {
+                        break;
+                    }
+                } catch (error) {
+                    lastError = error;
+                    continue;
+                }
+            }
+            
+            if (!response || !response.ok) {
+                throw new Error(`Failed to load links.json: ${lastError?.message || response?.statusText || 'Unknown error'}`);
+            }
+            
+            const text = await response.text();
+            console.log('Raw response text:', text);
+            
+            // Parse JSON with error handling
+            let linksArray;
+            try {
+                linksArray = JSON.parse(text);
+            } catch (parseError) {
+                console.error('JSON parse error:', parseError);
+                throw new Error(`Invalid JSON in links.json: ${parseError.message}`);
+            }
+            
+            console.log('Parsed links array:', linksArray);
+            
+            // Validate it's an array
+            if (!Array.isArray(linksArray)) {
+                throw new Error('links.json must contain an array of link objects');
+            }
+            
+            // Convert array to object for easier lookup
+            linksCache = {};
+            linksArray.forEach((link, index) => {
+                if (!link || typeof link !== 'object') {
+                    console.warn(`Invalid link entry at index ${index}:`, link);
+                    return;
+                }
+                if (link.section && link.url) {
+                    const sectionKey = String(link.section).trim();
+                    const url = String(link.url).trim();
+                    linksCache[sectionKey] = url;
+                    console.log(`Mapped section "${sectionKey}" to URL: ${url}`);
+                } else {
+                    console.warn(`Invalid link entry at index ${index} - missing section or url:`, link);
+                }
+            });
+            
+            console.log('Links loaded successfully:', linksCache);
+            console.log('Available section keys:', Object.keys(linksCache));
+            console.log('Number of links loaded:', Object.keys(linksCache).length);
+            
+            // Verify all required sections are present
+            const requiredSections = ['introductory', 'limits', 'integrals', 'differential-equations', 'series', 'differential-calculus'];
+            const missingSections = requiredSections.filter(section => !linksCache[section]);
+            if (missingSections.length > 0) {
+                console.warn('Missing sections in links.json:', missingSections);
+            }
+            
+            return linksCache;
+        } catch (error) {
+            console.error('Error loading links.json:', error);
+            linksLoadPromise = null; // Reset so we can try again
+            return {};
+        }
+    })();
+    
+    return linksLoadPromise;
+}
+
+/**
+ * Get collection link URL for a section from links.json
+ * @param {string} sectionKey - The section key (e.g., 'integrals', 'introductory')
+ * @returns {Promise<string>} The URL for the section or empty string if not found
+ */
+export async function getCollectionLinkUrl(sectionKey) {
+    try {
+        const normalizedKey = String(sectionKey).trim();
+        console.log(`Getting link for section key: "${normalizedKey}"`);
+        
+        const links = await loadLinks();
+        console.log('Links object received:', links);
+        console.log('Looking for key:', normalizedKey);
+        console.log('Available keys in links:', Object.keys(links));
+        
+        // Try exact match first
+        let url = links[normalizedKey] || '';
+        
+        // If not found, try case-insensitive match
+        if (!url) {
+            const lowerKey = normalizedKey.toLowerCase();
+            for (const key in links) {
+                if (key.toLowerCase() === lowerKey) {
+                    url = links[key];
+                    console.log(`Found case-insensitive match: "${key}" -> ${url}`);
+                    break;
+                }
+            }
+        }
+        
+        if (!url) {
+            console.warn(`No link found for section: "${normalizedKey}"`);
+            console.warn('Available sections in links:', Object.keys(links));
+            console.warn('Section key type:', typeof normalizedKey);
+            console.warn('Section key value:', JSON.stringify(normalizedKey));
+            console.warn('Links cache contents:', links);
+        } else {
+            console.log(`Found URL for "${normalizedKey}": ${url}`);
+        }
+        return url || '';
+    } catch (error) {
+        console.error(`Error getting link for section ${sectionKey}:`, error);
+        console.error('Error stack:', error.stack);
+        return '';
+    }
+}
+
+/**
+ * Get collection PDF URL for a section (deprecated - use getCollectionLinkUrl instead)
+ * @deprecated Use getCollectionLinkUrl instead
  */
 export function getCollectionPdfUrl(sectionKey) {
     // Map section keys to their collection PDF paths

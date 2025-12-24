@@ -8,6 +8,7 @@ import { initModal } from './features/modal.js';
 import { initRouting, initSmoothScroll } from './features/routing.js';
 import { initLazyLoading } from './features/lazyLoading.js';
 import { initDownloadCollections } from './features/downloadCollections.js';
+import { loadLinks } from './utils/helpers.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all features
@@ -16,7 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initRouting();
     initSmoothScroll();
     initLazyLoading();
-    initDownloadCollections();
+    
+    // Preload links before initializing download collections
+    loadLinks().then(() => {
+        initDownloadCollections();
+    }).catch((error) => {
+        console.error('Failed to preload links:', error);
+        // Still initialize buttons even if links fail to load
+        initDownloadCollections();
+    });
     
     // Announce page load for screen readers
     const announcement = document.createElement('div');

@@ -25,20 +25,216 @@ const sectionCategoryMap = {
 // getPdfUrl is now defined in js/utils/pdfs.js
 
 /**
- * Get collection PDF URL for a section
+ * Cache for links data
+ * Fallback links embedded directly in case fetch fails
  */
-function getCollectionPdfUrl(sectionKey) {
-    // Map section keys to their collection PDF paths
-    const collectionPaths = {
-        'introductory': 'Math-Problems/Introduction/Collection.pdf',
-        'limits': 'Math-Problems/Limits/Collection.pdf',
-        'integrals': 'Math-Problems/Integrals/Collection.pdf',
-        'differential-equations': 'Math-Problems/DifferentialEquations/Collection.pdf',
-        'series': 'Math-Problems/Series/Collection.pdf',
-        'differential-calculus': 'Math-Problems/DifferentialCalculus/Collection.pdf'
-    };
+const FALLBACK_LINKS = {
+    'introductory': 'https://www.payhip.com',
+    'limits': 'https://www.payhip.com',
+    'integrals': 'https://www.payhip.com',
+    'differential-equations': 'https://www.payhip.com',
+    'series': 'https://www.payhip.com',
+    'differential-calculus': 'https://www.payhip.com'
+};
+
+let linksCache = null;
+let linksLoadPromise = null;
+
+/**
+ * Get links from window.linksData (loaded via script tag) as primary source
+ * This works even with file:// protocol
+ */
+function getLinksFromScript() {
+    if (typeof window !== 'undefined' && window.linksData) {
+        console.log('Found linksData in window object:', window.linksData);
+        return window.linksData;
+    }
+    return null;
+}
+
+/**
+ * Load links from links.json file
+ * @returns {Promise<Object>} Object mapping section keys to URLs
+ */
+async function loadLinks() {
+    // First, try to get links from script tag (works with file:// protocol)
+    const scriptLinks = getLinksFromScript();
+    if (scriptLinks) {
+        linksCache = { ...scriptLinks };
+        console.log('Using links from script tag:', linksCache);
+        return linksCache;
+    }
     
-    return collectionPaths[sectionKey] || `#collection-${sectionKey}`;
+    if (linksCache) {
+        return linksCache;
+    }
+    
+    // If already loading, return the existing promise
+    if (linksLoadPromise) {
+        return linksLoadPromise;
+    }
+    
+    // Start loading via fetch
+    linksLoadPromise = (async () => {
+        try {
+            // Try different possible paths
+            const paths = [
+                'ProblemsData/links.json',
+                './ProblemsData/links.json',
+                '/ProblemsData/links.json'
+            ];
+            
+            let response = null;
+            let lastError = null;
+            
+            for (const path of paths) {
+                try {
+                    response = await fetch(path);
+                    if (response.ok) {
+                        break;
+                    }
+                } catch (error) {
+                    lastError = error;
+                    continue;
+                }
+            }
+            
+            if (!response || !response.ok) {
+                throw new Error(`Failed to load links.json: ${lastError?.message || response?.statusText || 'Unknown error'}`);
+            }
+            
+            const text = await response.text();
+            console.log('Raw response text:', text);
+            
+            // Parse JSON with error handling
+            let linksArray;
+            try {
+                linksArray = JSON.parse(text);
+            } catch (parseError) {
+                console.error('JSON parse error:', parseError);
+                throw new Error(`Invalid JSON in links.json: ${parseError.message}`);
+            }
+            
+            console.log('Parsed links array:', linksArray);
+            
+            // Validate it's an array
+            if (!Array.isArray(linksArray)) {
+                throw new Error('links.json must contain an array of link objects');
+            }
+            
+            // Convert array to object for easier lookup
+            linksCache = {};
+            linksArray.forEach((link, index) => {
+                if (!link || typeof link !== 'object') {
+                    console.warn(`Invalid link entry at index ${index}:`, link);
+                    return;
+                }
+                if (link.section && link.url) {
+                    const sectionKey = String(link.section).trim();
+                    const url = String(link.url).trim();
+                    linksCache[sectionKey] = url;
+                    console.log(`Mapped section "${sectionKey}" to URL: ${url}`);
+                } else {
+                    console.warn(`Invalid link entry at index ${index} - missing section or url:`, link);
+                }
+            });
+            
+            console.log('Links loaded successfully:', linksCache);
+            console.log('Available section keys:', Object.keys(linksCache));
+            console.log('Number of links loaded:', Object.keys(linksCache).length);
+            
+            // Verify all required sections are present
+            const requiredSections = ['introductory', 'limits', 'integrals', 'differential-equations', 'series', 'differential-calculus'];
+            const missingSections = requiredSections.filter(section => !linksCache[section]);
+            if (missingSections.length > 0) {
+                console.warn('Missing sections in links.json:', missingSections);
+            }
+            
+            return linksCache;
+        } catch (error) {
+            console.error('Error loading links.json:', error);
+            console.warn('Using fallback links embedded in code');
+            // Use fallback links if fetch fails
+            linksCache = { ...FALLBACK_LINKS };
+            linksLoadPromise = null; // Reset so we can try again
+            return linksCache;
+        }
+    })();
+    
+    return linksLoadPromise;
+}
+
+/**
+ * Get collection link URL for a section from links.json
+ * @param {string} sectionKey - The section key (e.g., 'integrals', 'introductory')
+ * @returns {Promise<string>} The URL for the section or empty string if not found
+ */
+async function getCollectionLinkUrl(sectionKey) {
+    try {
+        const normalizedKey = String(sectionKey).trim();
+        console.log(`Getting link for section key: "${normalizedKey}"`);
+        
+        let links;
+        try {
+            links = await loadLinks();
+        } catch (loadError) {
+            console.error('Failed to load links, using fallback:', loadError);
+            links = FALLBACK_LINKS;
+        }
+        
+        // If links is empty or null, use fallback
+        if (!links || Object.keys(links).length === 0) {
+            console.warn('Links object is empty, using fallback');
+            links = FALLBACK_LINKS;
+        }
+        
+        console.log('Links object received:', links);
+        console.log('Looking for key:', normalizedKey);
+        console.log('Available keys in links:', Object.keys(links));
+        
+        // Try exact match first
+        let url = links[normalizedKey] || '';
+        
+        // If not found, try case-insensitive match
+        if (!url) {
+            const lowerKey = normalizedKey.toLowerCase();
+            for (const key in links) {
+                if (key.toLowerCase() === lowerKey) {
+                    url = links[key];
+                    console.log(`Found case-insensitive match: "${key}" -> ${url}`);
+                    break;
+                }
+            }
+        }
+        
+        // If still not found, try fallback
+        if (!url && FALLBACK_LINKS[normalizedKey]) {
+            console.warn(`Using fallback link for "${normalizedKey}"`);
+            url = FALLBACK_LINKS[normalizedKey];
+        }
+        
+        if (!url) {
+            console.error(`No link found for section: "${normalizedKey}"`);
+            console.error('Available sections in links:', Object.keys(links));
+            console.error('Available sections in fallback:', Object.keys(FALLBACK_LINKS));
+            console.error('Section key type:', typeof normalizedKey);
+            console.error('Section key value:', JSON.stringify(normalizedKey));
+            console.error('Links cache contents:', JSON.stringify(links, null, 2));
+        } else {
+            console.log(`Found URL for "${normalizedKey}": ${url}`);
+        }
+        return url || '';
+    } catch (error) {
+        console.error(`Error getting link for section ${sectionKey}:`, error);
+        console.error('Error stack:', error.stack);
+        // Return fallback if available
+        const fallbackUrl = FALLBACK_LINKS[sectionKey] || '';
+        if (fallbackUrl) {
+            console.log(`Using fallback URL for ${sectionKey}: ${fallbackUrl}`);
+            return fallbackUrl;
+        }
+        return '';
+    }
 }
 
 /**
@@ -453,7 +649,8 @@ function initLazyLoading() {
 function createDownloadButton(sectionKey, sectionData) {
     const button = document.createElement('button');
     button.className = 'download-collection-btn';
-    button.setAttribute('aria-label', `Download complete collection for ${sectionData.title}`);
+    button.setAttribute('aria-label', `Open collection link for ${sectionData.title}`);
+    button.setAttribute('data-section-key', sectionKey); // Store section key as data attribute
     
     const icon = document.createElement('span');
     icon.className = 'download-icon';
@@ -467,25 +664,59 @@ function createDownloadButton(sectionKey, sectionData) {
     title.className = 'download-btn-title';
     title.textContent = sectionData.title;
     
-    const subtitle = document.createElement('span');
-    subtitle.className = 'download-btn-subtitle';
-    subtitle.textContent = `${sectionData.problems.length} Problems`;
-    
     content.appendChild(title);
-    content.appendChild(subtitle);
     
     button.appendChild(icon);
     button.appendChild(content);
     
-    button.addEventListener('click', () => {
-        const pdfUrl = getCollectionPdfUrl(sectionKey);
-        // Trigger PDF download
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = `${sectionData.title.replace(/\s+/g, '_')}_Collection.pdf`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Get section key from button data attribute as fallback
+        const btnSectionKey = button.getAttribute('data-section-key') || sectionKey;
+        
+        try {
+            console.log(`Button clicked for section: ${btnSectionKey}`);
+            console.log('Current linksCache:', linksCache);
+            console.log('Type of linksCache:', typeof linksCache);
+            
+            // Ensure links are loaded
+            if (!linksCache) {
+                console.log('Links cache is empty, loading links...');
+                await loadLinks();
+            }
+            
+            console.log('Links cache after ensure load:', linksCache);
+            console.log('Available keys:', linksCache ? Object.keys(linksCache) : 'null');
+            
+            const linkUrl = await getCollectionLinkUrl(btnSectionKey);
+            console.log(`Retrieved URL for ${btnSectionKey}:`, linkUrl);
+            
+            if (linkUrl && linkUrl.trim() !== '') {
+                // Use anchor element click method to avoid popup blockers
+                // This method is more reliable than window.open() for user-initiated actions
+                const link = document.createElement('a');
+                link.href = linkUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                console.log(`Successfully opened link: ${linkUrl}`);
+            } else {
+                console.error(`No link found for section: ${btnSectionKey}`);
+                console.error('Available sections in cache:', linksCache ? Object.keys(linksCache) : 'cache is null');
+                console.error('All sections in problemsData:', Object.keys(problemsData));
+                console.error('Links cache full contents:', JSON.stringify(linksCache, null, 2));
+                alert(`No link available for ${sectionData.title} (section key: ${btnSectionKey}). Please check the links.json file and browser console for details.`);
+            }
+        } catch (error) {
+            console.error(`Error opening link for ${btnSectionKey}:`, error);
+            console.error('Error details:', error.stack);
+            alert(`Error opening link: ${error.message}. Check console for details.`);
+        }
     });
     
     return button;
@@ -517,7 +748,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initRouting();
     initSmoothScroll();
     initLazyLoading();
-    initDownloadCollections();
+    
+    // Preload links before initializing download collections
+    loadLinks().then((links) => {
+        console.log('Links preloaded successfully on page load:', links);
+        console.log('Number of links loaded:', Object.keys(links).length);
+        initDownloadCollections();
+    }).catch((error) => {
+        console.error('Failed to preload links:', error);
+        console.error('Error stack:', error.stack);
+        alert('Warning: Could not load links.json. Buttons may not work. Check console for details.');
+        // Still initialize buttons even if links fail to load
+        initDownloadCollections();
+    });
     
     // Set initial ARIA states
     document.getElementById('problemModal').setAttribute('aria-hidden', 'true');

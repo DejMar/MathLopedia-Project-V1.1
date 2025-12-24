@@ -4,12 +4,12 @@
  */
 
 import { problemsData } from '../data/problemsData.js';
-import { getCollectionPdfUrl } from '../utils/helpers.js';
+import { getCollectionLinkUrl } from '../utils/helpers.js';
 
 function createDownloadButton(sectionKey, sectionData) {
     const button = document.createElement('button');
     button.className = 'download-collection-btn';
-    button.setAttribute('aria-label', `Download complete collection for ${sectionData.title}`);
+    button.setAttribute('aria-label', `Open collection link for ${sectionData.title}`);
     
     const icon = document.createElement('span');
     icon.className = 'download-icon';
@@ -23,25 +23,40 @@ function createDownloadButton(sectionKey, sectionData) {
     title.className = 'download-btn-title';
     title.textContent = sectionData.title;
     
-    const subtitle = document.createElement('span');
-    subtitle.className = 'download-btn-subtitle';
-    subtitle.textContent = `${sectionData.problems.length} Problems`;
-    
     content.appendChild(title);
-    content.appendChild(subtitle);
     
     button.appendChild(icon);
     button.appendChild(content);
     
-    button.addEventListener('click', () => {
-        const pdfUrl = getCollectionPdfUrl(sectionKey);
-        // Trigger PDF download
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = `${sectionData.title.replace(/\s+/g, '_')}_Collection.pdf`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        try {
+            console.log(`Button clicked for section: ${sectionKey}`);
+            const linkUrl = await getCollectionLinkUrl(sectionKey);
+            console.log(`Retrieved URL for ${sectionKey}:`, linkUrl);
+            
+            if (linkUrl && linkUrl.trim() !== '') {
+                // Use anchor element click method to avoid popup blockers
+                // This method is more reliable than window.open() for user-initiated actions
+                const link = document.createElement('a');
+                link.href = linkUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                console.log(`Successfully opened link: ${linkUrl}`);
+            } else {
+                console.warn(`No link found for section: ${sectionKey}`);
+                alert(`No link available for ${sectionData.title}. Please check the links.json file.`);
+            }
+        } catch (error) {
+            console.error(`Error opening link for ${sectionKey}:`, error);
+            alert(`Error opening link: ${error.message}`);
+        }
     });
     
     return button;
