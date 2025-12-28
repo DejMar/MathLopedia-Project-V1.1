@@ -508,18 +508,26 @@ function handleRoute() {
     const homeView = document.getElementById('home-view');
     const sectionView = document.getElementById('section-view');
     const breadcrumbList = document.getElementById('breadcrumb-list');
+    const breadcrumbNav = document.querySelector('.breadcrumb');
     
     if (hash === 'home' || hash === '') {
         // Show home view
         homeView.classList.add('active');
         sectionView.classList.remove('active');
         
-        // Update breadcrumb
-        breadcrumbList.innerHTML = '<li><a href="#home" class="breadcrumb-link">Home</a></li>';
+        // Hide breadcrumb on home page
+        if (breadcrumbNav) {
+            breadcrumbNav.style.display = 'none';
+        }
     } else if (problemsData[hash]) {
         // Show section view
         homeView.classList.remove('active');
         sectionView.classList.add('active');
+        
+        // Show breadcrumb on other pages
+        if (breadcrumbNav) {
+            breadcrumbNav.style.display = '';
+        }
         
         // Load section data
         const sectionData = problemsData[hash];
