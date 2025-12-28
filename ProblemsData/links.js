@@ -8,9 +8,9 @@
 window.linksData = {
     'introductory': 'https://payhip.com/b/hQy4H',
     'limits': 'https://payhip.com/b/Ggh8C',
-    'integrals': 'https://www.payhip.com',
-    'differential-equations': 'https://www.payhip.com',
-    'series': 'https://www.payhip.com',
+    'integrals': 'https://payhip.com/b/H7nKF',
+    'differential-equations': 'https://payhip.com/b/mOgu0',
+    'series': 'https://payhip.com/b/9S1NW',
     'differential-calculus': 'https://www.payhip.com'
 };
 
