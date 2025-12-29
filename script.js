@@ -15,7 +15,10 @@ const sectionCategoryMap = {
     'integrals': 'integrals',
     'differential-equations': 'differentialEquations',
     'series': 'series',
-    'differential-calculus': 'differentialCalculus'
+    'differential-calculus': 'differentialCalculus',
+    'physics': 'physics',
+    'probability': 'probability',
+    'complex-numbers': 'complexNumbers'
 };
 
 // ============================================
@@ -34,7 +37,10 @@ const FALLBACK_LINKS = {
     'integrals': 'https://www.payhip.com',
     'differential-equations': 'https://www.payhip.com',
     'series': 'https://www.payhip.com',
-    'differential-calculus': 'https://www.payhip.com'
+    'differential-calculus': 'https://www.payhip.com',
+    'physics': 'https://www.payhip.com',
+    'probability': 'https://www.payhip.com',
+    'complex-numbers': 'https://www.payhip.com'
 };
 
 let linksCache = null;
@@ -144,7 +150,7 @@ async function loadLinks() {
             console.log('Number of links loaded:', Object.keys(linksCache).length);
             
             // Verify all required sections are present
-            const requiredSections = ['introductory', 'limits', 'integrals', 'differential-equations', 'series', 'differential-calculus'];
+            const requiredSections = ['introductory', 'limits', 'integrals', 'differential-equations', 'series', 'differential-calculus', 'physics', 'probability', 'complex-numbers'];
             const missingSections = requiredSections.filter(section => !linksCache[section]);
             if (missingSections.length > 0) {
                 console.warn('Missing sections in links.json:', missingSections);

@@ -137,7 +137,7 @@ export async function loadLinks() {
             console.log('Number of links loaded:', Object.keys(linksCache).length);
             
             // Verify all required sections are present
-            const requiredSections = ['introductory', 'limits', 'integrals', 'differential-equations', 'series', 'differential-calculus'];
+            const requiredSections = ['introductory', 'limits', 'integrals', 'differential-equations', 'series', 'differential-calculus', 'physics', 'probability', 'complex-numbers'];
             const missingSections = requiredSections.filter(section => !linksCache[section]);
             if (missingSections.length > 0) {
                 console.warn('Missing sections in links.json:', missingSections);
@@ -213,7 +213,10 @@ export function getCollectionPdfUrl(sectionKey) {
         'integrals': 'Math-Problems/Integrals/Collection.pdf',
         'differential-equations': 'Math-Problems/DifferentialEquations/Collection.pdf',
         'series': 'Math-Problems/Series/Collection.pdf',
-        'differential-calculus': 'Math-Problems/DifferentialCalculus/Collection.pdf'
+        'differential-calculus': 'Math-Problems/DifferentialCalculus/Collection.pdf',
+        'physics': 'Math-Problems/Physics/Collection.pdf',
+        'probability': 'Math-Problems/Probability/Collection.pdf',
+        'complex-numbers': 'Math-Problems/ComplexNumbers/Collection.pdf'
     };
     
     return collectionPaths[sectionKey] || `#collection-${sectionKey}`;

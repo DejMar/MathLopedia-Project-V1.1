@@ -9,6 +9,9 @@
  * - differentialEquationsData
  * - seriesData
  * - differentialCalculusData
+ * - physicsData
+ * - probabilityData
+ * - complexNumbersData
  */
 
 // ============================================
@@ -21,6 +24,9 @@ const problemsData = {
     integrals: integralsData,
     'differential-equations': differentialEquationsData,
     series: seriesData,
-    'differential-calculus': differentialCalculusData
+    'differential-calculus': differentialCalculusData,
+    physics: physicsData,
+    probability: probabilityData,
+    'complex-numbers': complexNumbersData
 };
 

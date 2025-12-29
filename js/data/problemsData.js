@@ -99,6 +99,54 @@ export const problemsData = {
             { id: 'dc-9', title: 'Optimization Problems', difficulty: 'hard', keywords: ['derivatives', 'optimization', 'maxima', 'minima'] },
             { id: 'dc-10', title: 'Related Rates Problems', difficulty: 'hard', keywords: ['derivatives', 'related rates', 'applications', 'time'] }
         ]
+    },
+    physics: {
+        title: 'Physics',
+        description: 'Explore fundamental physics concepts with detailed step-by-step solutions. Master mechanics, thermodynamics, electromagnetism, optics, and modern physics through comprehensive solved problems.',
+        problems: [
+            { id: 'physics-1', title: 'Kinematics: Motion in One Dimension', difficulty: 'easy', keywords: ['kinematics', 'motion', 'velocity', 'acceleration'] },
+            { id: 'physics-2', title: 'Kinematics: Projectile Motion', difficulty: 'medium', keywords: ['kinematics', 'projectile', 'two-dimensional', 'motion'] },
+            { id: 'physics-3', title: 'Newton\'s Laws of Motion', difficulty: 'medium', keywords: ['newton', 'forces', 'laws', 'mechanics'] },
+            { id: 'physics-4', title: 'Work and Energy', difficulty: 'medium', keywords: ['work', 'energy', 'kinetic', 'potential'] },
+            { id: 'physics-5', title: 'Momentum and Collisions', difficulty: 'medium', keywords: ['momentum', 'collisions', 'conservation', 'impulse'] },
+            { id: 'physics-6', title: 'Rotational Motion', difficulty: 'hard', keywords: ['rotation', 'angular', 'torque', 'moment of inertia'] },
+            { id: 'physics-7', title: 'Gravitation', difficulty: 'medium', keywords: ['gravity', 'gravitation', 'orbital', 'kepler'] },
+            { id: 'physics-8', title: 'Thermodynamics: Heat and Temperature', difficulty: 'medium', keywords: ['thermodynamics', 'heat', 'temperature', 'thermal'] },
+            { id: 'physics-9', title: 'Electric Fields and Forces', difficulty: 'hard', keywords: ['electric', 'fields', 'forces', 'coulomb'] },
+            { id: 'physics-10', title: 'Magnetic Fields and Forces', difficulty: 'hard', keywords: ['magnetic', 'fields', 'forces', 'lorentz'] }
+        ]
+    },
+    probability: {
+        title: 'Probability',
+        description: 'Master probability theory with comprehensive solved problems. Explore basic probability, conditional probability, Bayes\' theorem, random variables, distributions, and statistical inference through step-by-step solutions.',
+        problems: [
+            { id: 'probability-1', title: 'Basic Probability: Sample Spaces', difficulty: 'easy', keywords: ['probability', 'sample space', 'outcomes', 'events'] },
+            { id: 'probability-2', title: 'Conditional Probability', difficulty: 'medium', keywords: ['probability', 'conditional', 'dependent', 'independent'] },
+            { id: 'probability-3', title: 'Bayes\' Theorem', difficulty: 'medium', keywords: ['probability', 'bayes', 'theorem', 'posterior'] },
+            { id: 'probability-4', title: 'Combinatorics: Permutations and Combinations', difficulty: 'medium', keywords: ['probability', 'combinatorics', 'permutations', 'combinations'] },
+            { id: 'probability-5', title: 'Binomial Distribution', difficulty: 'medium', keywords: ['probability', 'binomial', 'distribution', 'discrete'] },
+            { id: 'probability-6', title: 'Normal Distribution', difficulty: 'hard', keywords: ['probability', 'normal', 'distribution', 'gaussian', 'continuous'] },
+            { id: 'probability-7', title: 'Poisson Distribution', difficulty: 'hard', keywords: ['probability', 'poisson', 'distribution', 'discrete'] },
+            { id: 'probability-8', title: 'Expected Value and Variance', difficulty: 'medium', keywords: ['probability', 'expected value', 'variance', 'mean'] },
+            { id: 'probability-9', title: 'Central Limit Theorem', difficulty: 'hard', keywords: ['probability', 'central limit theorem', 'sampling', 'statistics'] },
+            { id: 'probability-10', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] }
+        ]
+    },
+    'complex-numbers': {
+        title: 'Complex Numbers and Functions',
+        description: 'Master complex numbers and complex functions with comprehensive solved problems. Explore complex arithmetic, polar form, De Moivre\'s theorem, complex functions, analytic functions, and applications in engineering and physics.',
+        problems: [
+            { id: 'complex-1', title: 'Basic Complex Arithmetic', difficulty: 'easy', keywords: ['complex numbers', 'arithmetic', 'addition', 'subtraction', 'multiplication'] },
+            { id: 'complex-2', title: 'Complex Conjugates and Modulus', difficulty: 'easy', keywords: ['complex numbers', 'conjugate', 'modulus', 'absolute value'] },
+            { id: 'complex-3', title: 'Polar Form and Euler\'s Formula', difficulty: 'medium', keywords: ['complex numbers', 'polar form', 'euler', 'exponential form'] },
+            { id: 'complex-4', title: 'De Moivre\'s Theorem', difficulty: 'medium', keywords: ['complex numbers', 'de moivre', 'powers', 'roots'] },
+            { id: 'complex-5', title: 'Complex Roots of Polynomials', difficulty: 'medium', keywords: ['complex numbers', 'roots', 'polynomials', 'fundamental theorem'] },
+            { id: 'complex-6', title: 'Complex Functions: Limits and Continuity', difficulty: 'hard', keywords: ['complex functions', 'limits', 'continuity', 'analysis'] },
+            { id: 'complex-7', title: 'Analytic Functions and Cauchy-Riemann Equations', difficulty: 'hard', keywords: ['complex functions', 'analytic', 'cauchy-riemann', 'differentiability'] },
+            { id: 'complex-8', title: 'Complex Integration', difficulty: 'hard', keywords: ['complex functions', 'integration', 'contour', 'cauchy'] },
+            { id: 'complex-9', title: 'Residue Theorem and Applications', difficulty: 'hard', keywords: ['complex functions', 'residue theorem', 'poles', 'applications'] },
+            { id: 'complex-10', title: 'Applications: Engineering and Physics', difficulty: 'hard', keywords: ['complex numbers', 'applications', 'engineering', 'physics', 'signal processing'] }
+        ]
     }
 };
 
@@ -109,6 +157,9 @@ export const sectionCategoryMap = {
     'integrals': 'integrals',
     'differential-equations': 'differentialEquations',
     'series': 'series',
-    'differential-calculus': 'differentialCalculus'
+    'differential-calculus': 'differentialCalculus',
+    'physics': 'physics',
+    'probability': 'probability',
+    'complex-numbers': 'complexNumbers'
 };
 

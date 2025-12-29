@@ -11,6 +11,9 @@ const sectionThumbnailMaps = {
     'differential-equations': differentialEquationsThumbnails,
     'series': seriesThumbnails,
     'differential-calculus': differentialCalculusThumbnails,
+    'physics': physicsThumbnails,
+    'probability': probabilityThumbnails,
+    'complex-numbers': complexNumbersThumbnails,
 };
 
 function getThumbnailUrl(problemId, sectionKey) {

@@ -11,6 +11,9 @@ window.linksData = {
     'integrals': 'https://payhip.com/b/H7nKF',
     'differential-equations': 'https://payhip.com/b/mOgu0',
     'series': 'https://payhip.com/b/9S1NW',
-    'differential-calculus': 'https://www.payhip.com'
+    'differential-calculus': 'https://www.payhip.com',
+    'physics': 'https://www.payhip.com',
+    'probability': 'https://www.payhip.com',
+    'complex-numbers': 'https://www.payhip.com'
 };
 

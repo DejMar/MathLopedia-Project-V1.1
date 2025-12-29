@@ -1,0 +1,22 @@
+/**
+ * MathLopedia - Probability Problems Data
+ * Contains problem data for probability problems
+ */
+
+const probabilityData = {
+    title: 'Probability',
+    description: 'Master probability theory with comprehensive solved problems. Explore basic probability, conditional probability, Bayes\' theorem, random variables, distributions, and statistical inference through step-by-step solutions.',
+    problems: [
+        { id: 'probability-1', title: 'Basic Probability: Sample Spaces', difficulty: 'easy', keywords: ['probability', 'sample space', 'outcomes', 'events'] },
+        { id: 'probability-2', title: 'Conditional Probability', difficulty: 'medium', keywords: ['probability', 'conditional', 'dependent', 'independent'] },
+        { id: 'probability-3', title: 'Bayes\' Theorem', difficulty: 'medium', keywords: ['probability', 'bayes', 'theorem', 'posterior'] },
+        { id: 'probability-4', title: 'Combinatorics: Permutations and Combinations', difficulty: 'medium', keywords: ['probability', 'combinatorics', 'permutations', 'combinations'] },
+        { id: 'probability-5', title: 'Binomial Distribution', difficulty: 'medium', keywords: ['probability', 'binomial', 'distribution', 'discrete'] },
+        { id: 'probability-6', title: 'Normal Distribution', difficulty: 'hard', keywords: ['probability', 'normal', 'distribution', 'gaussian', 'continuous'] },
+        { id: 'probability-7', title: 'Poisson Distribution', difficulty: 'hard', keywords: ['probability', 'poisson', 'distribution', 'discrete'] },
+        { id: 'probability-8', title: 'Expected Value and Variance', difficulty: 'medium', keywords: ['probability', 'expected value', 'variance', 'mean'] },
+        { id: 'probability-9', title: 'Central Limit Theorem', difficulty: 'hard', keywords: ['probability', 'central limit theorem', 'sampling', 'statistics'] },
+        { id: 'probability-10', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] }
+    ]
+};
+

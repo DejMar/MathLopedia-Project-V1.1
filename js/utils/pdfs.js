@@ -11,6 +11,9 @@ const sectionPdfMaps = {
     'differential-equations': differentialEquationsPdfs,
     'series': seriesPdfs,
     'differential-calculus': differentialCalculusPdfs,
+    'physics': physicsPdfs,
+    'probability': probabilityPdfs,
+    'complex-numbers': complexNumbersPdfs,
 };
 
 function getPdfUrl(problemId, sectionKey) {

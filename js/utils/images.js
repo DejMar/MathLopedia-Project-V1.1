@@ -10,7 +10,10 @@ function getImageUrls(problemId, sectionKey) {
         'limits': limitsImages,
         'series': seriesImages,
         'differential-calculus': differentialCalculusImages,
-        'introductory': introductoryImages
+        'introductory': introductoryImages,
+        'physics': physicsImages,
+        'probability': probabilityImages,
+        'complex-numbers': complexNumbersImages
     };
 
     const sectionImages = sectionImageMap[sectionKey];
