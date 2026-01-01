@@ -11,12 +11,22 @@ const seriesData = {
         { id: 'series-2', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'convergence', 'divergence', 'test'] },
         { id: 'series-3', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'integral test', 'convergence'] },
         { id: 'series-4', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'comparison test', 'limit comparison'] },
-        { id: 'series-5', title: 'Arithmetic and Geometric Series', difficulty: 'hard', keywords: ['series', 'ratio test', 'root test', 'convergence'] },
+        { id: 'series-5', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'ratio test', 'root test', 'convergence'] },
         { id: 'series-6', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'alternating', 'convergence', 'test'] },
-        { id: 'series-7', title: 'Arithmetic and Geometric Series', difficulty: 'hard', keywords: ['series', 'power series', 'convergence', 'interval'] },
-        { id: 'series-8', title: 'Arithmetic and Geometric Series', difficulty: 'hard', keywords: ['series', 'taylor', 'maclaurin', 'expansion'] },
+        { id: 'series-7', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'power series', 'convergence', 'interval'] },
+        { id: 'series-8', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'taylor', 'maclaurin', 'expansion'] },
         { id: 'series-9', title: 'Arithmetic and Geometric Series', difficulty: 'hard', keywords: ['series', 'fourier', 'trigonometric', 'periodic'] },
-        { id: 'series-10', title: 'Arithmetic and Geometric Series', difficulty: 'hard', keywords: ['series', 'applications', 'approximation', 'analysis'] }
+        { id: 'series-10', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-11', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-12', title: 'Arithmetic and Geometric Series', difficulty: 'hard', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-13', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-14', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-15', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-16', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-17', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-18', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-19', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] },
+        { id: 'series-20', title: 'Arithmetic and Geometric Series', difficulty: 'medium', keywords: ['series', 'applications', 'approximation', 'analysis'] }
     ]
 };
 

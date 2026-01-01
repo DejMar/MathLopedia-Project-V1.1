@@ -16,7 +16,17 @@ const probabilityData = {
         { id: 'probability-7', title: 'Poisson Distribution', difficulty: 'hard', keywords: ['probability', 'poisson', 'distribution', 'discrete'] },
         { id: 'probability-8', title: 'Expected Value and Variance', difficulty: 'medium', keywords: ['probability', 'expected value', 'variance', 'mean'] },
         { id: 'probability-9', title: 'Central Limit Theorem', difficulty: 'hard', keywords: ['probability', 'central limit theorem', 'sampling', 'statistics'] },
-        { id: 'probability-10', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] }
+        { id: 'probability-10', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-11', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-12', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-13', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-14', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-15', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-16', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-17', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-18', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-19', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] },
+        { id: 'probability-20', title: 'Hypothesis Testing', difficulty: 'hard', keywords: ['probability', 'hypothesis testing', 'statistics', 'significance'] }
     ]
 };
 

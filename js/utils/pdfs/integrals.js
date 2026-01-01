@@ -8,7 +8,7 @@ function getIntegralsPdfs(count = 20) {
     const pdfs = {};
     for (let i = 1; i <= count; i++) {
         const folderNum = String(i).padStart(3, '0');
-        const fileNum = String(i).padStart(2, '0');
+        const fileNum = String(i).padStart(3, '0');
         pdfs[`integral-${i}`] = `Math-Problems/Integrals/${folderNum}/${fileNum}.pdf`;
     }
     return pdfs;
