@@ -27,6 +27,7 @@ const physicsImages = {
     ],
     'physics-8': [
         'Math-Problems/Physics/008/008_page-0001.jpg',
+        'Math-Problems/Physics/008/008_page-0002.jpg'
     ],
     'physics-9': [
         'Math-Problems/Physics/009/009_page-0001.jpg'
@@ -59,7 +60,8 @@ const physicsImages = {
         'Math-Problems/Physics/018/018_page-0001.jpg'
     ],
     'physics-19': [
-        'Math-Problems/Physics/019/019_page-0001.jpg'
+        'Math-Problems/Physics/019/019_page-0001.jpg',
+        'Math-Problems/Physics/019/019_page-0002.jpg'
     ],
     'physics-20': [
         'Math-Problems/Physics/020/020_page-0001.jpg'
@@ -80,7 +82,8 @@ const physicsImages = {
         'Math-Problems/Physics/025/025_page-0001.jpg'
     ],
     'physics-26': [
-        'Math-Problems/Physics/026/026_page-0001.jpg'
+        'Math-Problems/Physics/026/026_page-0001.jpg',
+        'Math-Problems/Physics/026/026_page-0002.jpg'
     ],
     'physics-27': [
         'Math-Problems/Physics/027/027_page-0001.jpg'
